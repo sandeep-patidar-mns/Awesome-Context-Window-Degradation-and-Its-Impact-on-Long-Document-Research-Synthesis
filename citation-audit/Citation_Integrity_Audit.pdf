@@ -1,1 +1,342 @@
+# Citation Integrity Audit
 
+## Research Topic
+
+**Context-Window Degradation and Its Impact on Long-Document Research Synthesis**
+
+---
+
+## Author Information
+
+**Name:** Sandeep Patidar
+
+**Institution:** Indian Institute of Information Technology Allahabad (IIIT Allahabad)
+
+**Department:** IT
+
+**Program:** MNS
+
+**Academic Year:** 2026
+
+**GitHub:** sandeep-patidar-mns
+
+---
+
+## 1. Purpose of the Audit
+
+This citation integrity audit evaluates the references used for the research topic:
+
+**Context-Window Degradation and Its Impact on Long-Document Research Synthesis**
+
+The purpose of this audit is to check whether the selected references are relevant to the research topic and whether their bibliographic information can be traced to an identifiable academic or official source.
+
+The audit also documents the role of AI assistance in the research workflow.
+
+---
+
+## 2. Citation Verification Criteria
+
+Each reference is evaluated using the following criteria:
+
+1. **Existence** – The referenced work should exist as an identifiable publication or official project.
+2. **Bibliographic Accuracy** – Author names, title, year, and publication information should be checked.
+3. **Relevance** – The source should have a meaningful relationship to the research topic.
+4. **Source Traceability** – The source should be traceable to an academic publisher, repository, or official project page.
+5. **Claim Support** – The source should be appropriate for supporting the claim for which it is cited.
+
+---
+
+## 3. Citation Audit
+
+| No. | Reference | Year | Research Area | Relevance | Status |
+|---|---|---:|---|---|---|
+| 1 | Attention Is All You Need | 2017 | Transformer Architecture | Foundational | Verified |
+| 2 | Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks | 2020 | Retrieval-Augmented Generation | High | Verified |
+| 3 | RoFormer: Enhanced Transformer with Rotary Position Embedding | 2021 | Positional Encoding | High | Verified |
+| 4 | Lost in the Middle: How Language Models Use Long Contexts | 2024 | Long-Context Degradation | Very High | Verified |
+| 5 | LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding | 2024 | Long-Context Benchmarking | Very High | Verified |
+| 6 | RULER: What's the Real Context Size of Your Long-Context Language Models? | 2024 | Long-Context Evaluation | Very High | Verified |
+| 7 | Efficient Streaming Language Models with Attention Sinks | 2024 | Long-Sequence Processing | High | Verified |
+| 8 | Needle in a Haystack | 2023 | Long-Context Retrieval | High | Verified |
+
+---
+
+# 4. Detailed Audit
+
+## 4.1 Attention Is All You Need
+
+**Authors:** Ashish Vaswani et al.
+
+**Year:** 2017
+
+**Research Area:** Transformer architecture and self-attention.
+
+**Relevance:** High
+
+**Audit Result:** Verified
+
+### Reason for Inclusion
+
+This work provides foundational background for Transformer-based language models and self-attention mechanisms.
+
+It is relevant because modern Large Language Models rely heavily on Transformer architectures for processing contextual information.
+
+---
+
+## 4.2 Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+
+**Authors:** Patrick Lewis et al.
+
+**Year:** 2020
+
+**Research Area:** Retrieval-Augmented Generation.
+
+**Relevance:** High
+
+**Audit Result:** Verified
+
+### Reason for Inclusion
+
+This work is relevant to approaches that retrieve external information before generating an answer.
+
+Retrieval-based approaches are important when studying alternatives to placing very large document collections directly into an LLM's context window.
+
+---
+
+## 4.3 RoFormer: Enhanced Transformer with Rotary Position Embedding
+
+**Authors:** Jianlin Su et al.
+
+**Year:** 2021
+
+**Research Area:** Rotary Position Embedding.
+
+**Relevance:** High
+
+**Audit Result:** Verified
+
+### Reason for Inclusion
+
+Positional representation is important when studying long contexts because the location of information can influence model behavior.
+
+This reference provides background on Rotary Position Embedding.
+
+---
+
+## 4.4 Lost in the Middle: How Language Models Use Long Contexts
+
+**Authors:** Nelson F. Liu et al.
+
+**Year:** 2024
+
+**Research Area:** Long-context information utilization.
+
+**Relevance:** Very High
+
+**Audit Result:** Verified
+
+### Reason for Inclusion
+
+This is a central reference for the research topic.
+
+The study investigates how language models use information located at different positions within long contexts and demonstrates that model performance can vary depending on information position.
+
+---
+
+## 4.5 LongBench
+
+**Authors:** Yushi Bai et al.
+
+**Year:** 2024
+
+**Research Area:** Long-context understanding.
+
+**Relevance:** Very High
+
+**Audit Result:** Verified
+
+### Reason for Inclusion
+
+LongBench provides a multitask benchmark for evaluating long-context understanding.
+
+It is relevant for studying model performance on tasks such as question answering, summarization, and multi-document understanding.
+
+---
+
+## 4.6 RULER
+
+**Authors:** Cheng-Ping Hsieh et al.
+
+**Year:** 2024
+
+**Research Area:** Long-context evaluation.
+
+**Relevance:** Very High
+
+**Audit Result:** Verified
+
+### Reason for Inclusion
+
+RULER provides a broader evaluation framework for long-context capabilities, including retrieval, multi-hop tasks, and aggregation.
+
+It is useful for studying whether advertised context length corresponds to effective context utilization.
+
+---
+
+## 4.7 Efficient Streaming Language Models with Attention Sinks
+
+**Authors:** Guangxuan Xiao et al.
+
+**Year:** 2024
+
+**Research Area:** Streaming language models and attention sinks.
+
+**Relevance:** High
+
+**Audit Result:** Verified
+
+### Reason for Inclusion
+
+This work investigates attention behavior in long or continuous sequences and proposes methods for efficient streaming language-model inference.
+
+It provides relevant background for understanding long-sequence processing.
+
+---
+
+## 4.8 Needle in a Haystack
+
+**Author:** Greg Kamradt
+
+**Year:** 2023
+
+**Research Area:** Long-context retrieval evaluation.
+
+**Relevance:** High
+
+**Audit Result:** Verified
+
+### Reason for Inclusion
+
+Needle-in-a-Haystack provides a practical method for testing whether a model can retrieve a specific piece of information from a large context.
+
+The method is relevant to experiments involving evidence position and context length.
+
+---
+
+# 5. Reference Quality Assessment
+
+The selected references cover several important areas:
+
+### Transformer Foundations
+
+- Transformer architecture
+- Self-attention
+- Positional representations
+
+### Long-Context Behavior
+
+- Context-window utilization
+- Lost-in-the-Middle effects
+- Long-context retrieval
+
+### Evaluation
+
+- LongBench
+- RULER
+- Needle-in-a-Haystack
+
+### Alternative Context Strategies
+
+- Retrieval-Augmented Generation
+- Streaming language models
+
+These areas collectively support the research topic.
+
+---
+
+# 6. Citation Integrity Risks
+
+AI-assisted research can introduce several citation risks.
+
+### Incorrect Bibliographic Information
+
+AI systems may generate incorrect author names, publication years, titles, or venues.
+
+### Unsupported Claims
+
+A source may be related to a topic but may not actually support the specific claim being made.
+
+### Duplicate or Fabricated References
+
+References should be checked against their original publication or official source.
+
+### Incorrect Interpretation
+
+A research paper may be summarized incorrectly or its findings may be generalized beyond the original experiment.
+
+---
+
+# 7. AI-Assisted Research Disclosure
+
+AI assistance was used during the preparation and organization of this research repository.
+
+AI assistance may include:
+
+- Topic exploration
+- Research organization
+- Draft preparation
+- Reference organization
+- Documentation
+- Research workflow development
+
+AI assistance does not replace independent verification.
+
+Important bibliographic information and research claims should be checked against the original source before academic submission.
+
+---
+
+# 8. Recommended Citation Practice
+
+For the final research paper:
+
+1. Cite the original research paper whenever possible.
+2. Place citations next to the claims they support.
+3. Do not cite a source merely because it is related to the topic.
+4. Verify author names and publication information.
+5. Verify DOI or official source information when available.
+6. Clearly distinguish published findings from personal interpretation.
+7. Do not present AI-generated references as verified without checking them.
+8. Keep experimental results separate from results reported by other researchers.
+
+---
+
+# 9. Audit Conclusion
+
+The references reviewed in this audit provide relevant academic and technical background for studying context-window degradation and long-document research synthesis.
+
+The strongest references for the central research question are long-context studies and benchmarks such as:
+
+- **Lost in the Middle**
+- **LongBench**
+- **RULER**
+- **Needle in a Haystack**
+
+Additional foundational references on Transformers, positional encoding, retrieval-augmented generation, and streaming language models provide supporting technical background.
+
+Citation verification should be repeated whenever references are added or modified.
+
+---
+
+## Author
+
+**Sandeep Patidar**
+
+**Indian Institute of Information Technology Allahabad (IIIT Allahabad)**
+
+**Department:** IT
+
+**Program:** MNS
+
+**Academic Year:** 2026
+
+**GitHub:** sandeep-patidar-mns
