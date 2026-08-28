@@ -1,190 +1,419 @@
 # References
 
-## 1. Attention Is All You Need
+## Research Topic
 
-**Authors:** Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin
+**Context-Window Degradation and Its Impact on Long-Document Research Synthesis**
 
-**Year:** 2017
-
-**Venue:** Advances in Neural Information Processing Systems (NeurIPS)
-
-**Topic:** Transformer architecture and self-attention
-
-**Relevance:** This paper introduced the Transformer architecture based on self-attention, which forms the foundation of modern Large Language Models and their ability to process contextual information.
+This document contains verified scholarly references relevant to long-context language models, context-window degradation, information retrieval, attention mechanisms, long-document understanding, evaluation, and research synthesis.
 
 ---
 
-## 2. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+## Foundational Transformer and Attention Research
 
-**Authors:** Patrick Lewis et al.
+### 1. Attention Is All You Need
 
-**Year:** 2020
+**Authors:** Ashish Vaswani et al.  
+**Year:** 2017  
+**Venue:** NeurIPS 2017  
+**Research Area:** Transformer Architecture  
+**Relevance:** Foundational
 
-**Venue:** Advances in Neural Information Processing Systems (NeurIPS)
+Introduced the Transformer architecture and self-attention mechanism that underlies modern large language models.
 
-**Topic:** Retrieval-Augmented Generation (RAG)
-
-**Relevance:** This work introduced Retrieval-Augmented Generation, which combines information retrieval with language-model generation. RAG is highly relevant to long-document research because relevant passages can be retrieved instead of placing an entire document collection into the model context.
-
----
-
-## 3. RoFormer: Enhanced Transformer with Rotary Position Embedding
-
-**Authors:** Jianlin Su et al.
-
-**Year:** 2021
-
-**Topic:** Rotary Position Embedding (RoPE)
-
-**Relevance:** RoPE is an important positional encoding method used in Transformer-based language models. Positional representations are particularly relevant when studying how models behave as context length increases.
+**Source:**  
+https://arxiv.org/abs/1706.03762
 
 ---
 
-## 4. Lost in the Middle: How Language Models Use Long Contexts
+### 2. RoFormer: Enhanced Transformer with Rotary Position Embedding
 
-**Authors:** Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, and Percy Liang
+**Authors:** Jianlin Su et al.  
+**Year:** 2021  
+**Research Area:** Positional Encoding  
+**Relevance:** High
 
-**Year:** 2024
+Introduced Rotary Position Embedding (RoPE), an important positional representation used by many Transformer-based language models.
 
-**Venue:** Transactions of the Association for Computational Linguistics, Volume 12, pages 157–173
-
-**DOI:** 10.1162/tacl_a_00638
-
-**Topic:** Long-context utilization and positional effects
-
-**Relevance:** This is a central reference for this research topic. The study examines multi-document question answering and key-value retrieval and finds that model performance can substantially degrade when relevant information is placed in the middle of a long context. Performance is often stronger when relevant information appears near the beginning or end of the context. :contentReference[oaicite:1]{index=1}
-
-**Official Source:**  
-https://aclanthology.org/2024.tacl-1.9/
+**Source:**  
+https://arxiv.org/abs/2104.09864
 
 ---
 
-## 5. LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding
+### 3. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
 
-**Authors:** Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu, Jiankai Tang, Zhidian Huang, Zhengxiao Du, Xiao Liu, Aohan Zeng, Lei Hou, Yuxiao Dong, Jie Tang, and Juanzi Li
+**Authors:** Patrick Lewis et al.  
+**Year:** 2020  
+**Venue:** NeurIPS 2020  
+**Research Area:** Retrieval-Augmented Generation  
+**Relevance:** High
 
-**Year:** 2024
+Introduced Retrieval-Augmented Generation (RAG), combining language-model generation with retrieved external knowledge.
 
-**Venue:** Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL), pages 3119–3137
-
-**DOI:** 10.18653/v1/2024.acl-long.172
-
-**Topic:** Long-context benchmarking
-
-**Relevance:** LongBench is a bilingual, multitask benchmark designed to evaluate long-context understanding. It contains 21 datasets covering six task categories, including single-document question answering, multi-document question answering, summarization, few-shot learning, synthetic tasks, and code completion. :contentReference[oaicite:2]{index=2}
-
-**Official Source:**  
-https://aclanthology.org/2024.acl-long.172/
+**Source:**  
+https://arxiv.org/abs/2005.11401
 
 ---
 
-## 6. RULER: What's the Real Context Size of Your Long-Context Language Models?
+## Long-Context Behavior and Degradation
 
-**Authors:** Cheng-Ping Hsieh, Simeng Sun, Samuel Kriman, Shantanu Acharya, Dima Rekesh, Fei Jia, Yang Zhang, and Boris Ginsburg
+### 4. Lost in the Middle: How Language Models Use Long Contexts
 
-**Year:** 2024
+**Authors:** Nelson F. Liu et al.  
+**Year:** 2024  
+**Venue:** Transactions of the Association for Computational Linguistics  
+**Research Area:** Long-Context Information Utilization  
+**Relevance:** Very High
 
-**Topic:** Long-context evaluation
+Investigates how language models use information at different positions within long contexts and demonstrates position-dependent degradation.
 
-**Relevance:** RULER extends the traditional Needle-in-a-Haystack evaluation approach with a broader set of tasks. It includes multiple needles, multi-hop tracing, and aggregation tasks to evaluate long-context capabilities beyond simple retrieval. The authors report that many models experience substantial performance drops as context length and task complexity increase. :contentReference[oaicite:3]{index=3}
-
-**Official Source:**  
-https://arxiv.org/abs/2404.06654
-
----
-
-## 7. Efficient Streaming Language Models with Attention Sinks
-
-**Authors:** Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis
-
-**Year:** 2024
-
-**Venue:** International Conference on Learning Representations (ICLR)
-
-**Topic:** Attention sinks and efficient long-sequence processing
-
-**Relevance:** This research investigates the phenomenon of attention sinks, where initial tokens can receive strong attention even when they are not semantically important. The work proposes StreamingLLM techniques for maintaining efficient language-model performance during long or continuous sequences. :contentReference[oaicite:4]{index=4}
-
-**Official Source:**  
-https://hanlab.mit.edu/projects/streamingllm
+**Source:**  
+https://arxiv.org/abs/2307.03172
 
 ---
 
-## 8. Needle in a Haystack
+### 5. Efficient Streaming Language Models with Attention Sinks
 
-**Author:** Greg Kamradt
+**Authors:** Guangxuan Xiao et al.  
+**Year:** 2024  
+**Research Area:** Long-Sequence Processing  
+**Relevance:** High
 
-**Year:** 2023
+Studies attention sinks and streaming language models for maintaining effective generation over long sequences.
 
-**Topic:** Long-context retrieval evaluation
+**Source:**  
+https://arxiv.org/abs/2309.17453
 
-**Relevance:** Needle-in-a-Haystack is a practical evaluation method that places a target piece of information inside a large amount of distracting text. The target can be positioned at different locations to examine whether a model can retrieve information across a long context.
+---
+
+### 6. Needle in a Haystack
+
+**Author:** Greg Kamradt  
+**Year:** 2023  
+**Research Area:** Long-Context Retrieval  
+**Relevance:** High
+
+Provides a practical evaluation method for testing whether a model can retrieve a specific piece of information from increasingly large contexts.
 
 **Repository:**  
 https://github.com/gkamradt/LLMTest_NeedleInAHaystack
 
 ---
 
-# Additional Research Areas
+## Long-Context Benchmarks and Evaluation
 
-The following areas are relevant to the study of context-window degradation and long-document research synthesis:
+### 7. LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding
 
-- Long-context Transformer architectures
-- Rotary Position Embedding (RoPE)
-- Position interpolation
-- RoPE scaling
-- NTK-aware scaling
-- YaRN
-- Sparse attention
-- Sliding-window attention
-- Streaming language models
-- KV-cache optimization
-- Retrieval-Augmented Generation
-- Hierarchical summarization
-- Recursive summarization
-- Multi-document question answering
-- Long-context reasoning
-- Research synthesis
-- Context compression
-- Information retrieval
+**Authors:** Yushi Bai et al.  
+**Year:** 2024  
+**Venue:** ACL 2024  
+**Research Area:** Long-Context Benchmarking  
+**Relevance:** Very High
+
+Provides a bilingual and multitask benchmark for evaluating long-context understanding across question answering, summarization, synthetic tasks, few-shot learning, and code completion.
+
+**Source:**  
+https://aclanthology.org/2024.acl-long.172/
+
+**Repository:**  
+https://github.com/THUDM/LongBench
 
 ---
 
-# Reference Verification
+### 8. RULER: What's the Real Context Size of Your Long-Context Language Models?
 
-Before using a reference in an academic submission, the following information should be independently checked:
+**Authors:** Cheng-Ping Hsieh et al.  
+**Year:** 2024  
+**Research Area:** Long-Context Evaluation  
+**Relevance:** Very High
 
-- Exact paper title
-- Author names
-- Publication year
-- Conference or journal
-- DOI, when available
-- Official publication page
-- Research relevance
-- Repository or implementation, when applicable
+Evaluates the effective context capabilities of language models using multiple synthetic retrieval, tracing, and aggregation tasks.
 
-AI-generated bibliographic information should not be treated as automatically verified.
+**Source:**  
+https://arxiv.org/abs/2404.06654
 
----
-
-# Research Topic
-
-**Context-Window Degradation and Its Impact on Long-Document Research Synthesis**
-
-This reference collection supports research into how Large Language Models process, retrieve, reason over, and synthesize information from long contexts.
+**Repository:**  
+https://github.com/NVIDIA/RULER
 
 ---
 
-# Author
+### 9. L-Eval: Instituting Standardized Evaluation for Long Context Language Models
+
+**Authors:** Chenxin An et al.  
+**Year:** 2024  
+**Venue:** ACL 2024  
+**Research Area:** Long-Context Evaluation  
+**Relevance:** Very High
+
+Introduces a standardized evaluation suite containing 20 subtasks, 508 long documents, and more than 2,000 human-labeled query-response pairs covering diverse tasks and context lengths.
+
+**Source:**  
+https://aclanthology.org/2024.acl-long.776/
+
+---
+
+### 10. LooGLE: Can Long-Context Language Models Understand Long Contexts?
+
+**Authors:** Jiaqi Li, Mengmeng Wang, Zilong Zheng, and Muhan Zhang  
+**Year:** 2024  
+**Venue:** ACL 2024  
+**Research Area:** Long-Context Understanding  
+**Relevance:** Very High
+
+Introduces a long-context benchmark containing long documents and questions with varying dependency ranges. The study examines whether models can actually understand long dependencies.
+
+**Source:**  
+https://aclanthology.org/2024.acl-long.859/
+
+---
+
+### 11. Ada-LEval: Evaluating Long-Context LLMs with Length-Adaptable Benchmarks
+
+**Authors:** Chonghua Wang, Haodong Duan, Songyang Zhang, Dahua Lin, and Kai Chen  
+**Year:** 2024  
+**Venue:** NAACL 2024  
+**Research Area:** Long-Context Evaluation  
+**Relevance:** Very High
+
+Introduces a length-adaptable benchmark capable of generating test cases at different context lengths, including ultra-long settings.
+
+**Source:**  
+https://aclanthology.org/2024.naacl-long.205/
+
+**Repository:**  
+https://github.com/open-compass/Ada-LEval
+
+---
+
+### 12. BAMBOO: A Comprehensive Benchmark for Evaluating Long Text Modeling Capacities of Large Language Models
+
+**Authors:** Zican Dong, Tianyi Tang, Junyi Li, Wayne Xin Zhao, and Ji-Rong Wen  
+**Year:** 2024  
+**Venue:** LREC-COLING 2024  
+**Research Area:** Long-Text Modeling  
+**Relevance:** Very High
+
+Provides a multitask long-context benchmark covering question answering, hallucination detection, text sorting, language modeling, and code completion.
+
+**Source:**  
+https://aclanthology.org/2024.lrec-main.188/
+
+---
+
+### 13. M4LE: A Multi-Ability Multi-Range Multi-Task Multi-Domain Long-Context Evaluation Benchmark for Large Language Models
+
+**Authors:** Wai-Chung Kwan et al.  
+**Year:** 2024  
+**Venue:** ACL 2024  
+**Research Area:** Long-Context Evaluation  
+**Relevance:** High
+
+Introduces a benchmark spanning multiple abilities, context ranges, tasks, and domains for evaluating long-context language models.
+
+**Source:**  
+https://aclanthology.org/2024.acl-long.832/
+
+---
+
+### 14. Leave No Document Behind: Benchmarking Long-Context LLMs with Extended Multi-Doc QA
+
+**Authors:** Minzheng Wang et al.  
+**Year:** 2024  
+**Venue:** EMNLP 2024  
+**Research Area:** Multi-Document Long-Context Understanding  
+**Relevance:** Very High
+
+Introduces Loong, a benchmark designed around realistic multi-document scenarios in which every document can contribute information necessary for answering a question.
+
+**Source:**  
+https://aclanthology.org/2024.emnlp-main.322/
+
+---
+
+### 15. Marathon: A Race Through the Realm of Long Context with Large Language Models
+
+**Authors:** Lei Zhang et al.  
+**Year:** 2024  
+**Venue:** ACL 2024  
+**Research Area:** Long-Context Reasoning  
+**Relevance:** High
+
+Introduces a long-context evaluation benchmark using multiple-choice questions to assess comprehension and reasoning over extended texts.
+
+**Source:**  
+https://aclanthology.org/2024.acl-long.284/
+
+---
+
+## Recent Long-Context Research
+
+### 16. HELMET: How to Evaluate Long-context Models Effectively and Thoroughly
+
+**Authors:** Howard Yen et al.  
+**Year:** 2025  
+**Venue:** ICLR 2025  
+**Research Area:** Long-Context Evaluation  
+**Relevance:** Very High
+
+HELMET provides a comprehensive evaluation framework covering several application-oriented long-context tasks, including retrieval-augmented generation, question answering, summarization, citation generation, and reranking.
+
+**Source:**  
+https://proceedings.iclr.cc/paper_files/paper/2025/hash/f5332c8273d02729730a9c24dec2135e-Abstract-Conference.html
+
+**Project:**  
+https://princeton-nlp.github.io/HELMET/
+
+**Repository:**  
+https://github.com/princeton-nlp/HELMET
+
+---
+
+### 17. Benchmarking Long-Context Language Models on Long Code Understanding
+
+**Authors:** Jia Li et al.  
+**Year:** 2025  
+**Venue:** ACL 2025  
+**Research Area:** Long-Code Understanding  
+**Relevance:** High
+
+Introduces LongCodeU, a benchmark covering multiple aspects of long-code understanding. The study reports substantial performance degradation when code length exceeds 32K tokens.
+
+**Source:**  
+https://aclanthology.org/2025.acl-long.1324/
+
+---
+
+### 18. Ref-Long: Benchmarking the Long-context Referencing Capability of Long-context Language Models
+
+**Authors:** Authors listed in ACL Anthology  
+**Year:** 2025  
+**Venue:** ACL 2025  
+**Research Area:** Long-Context Referencing  
+**Relevance:** Very High
+
+Introduces a benchmark for evaluating whether long-context language models can correctly attribute information to specific parts of long-context data.
+
+**Source:**  
+https://aclanthology.org/2025.acl-long.1162/
+
+---
+
+### 19. MiniLongBench: The Low-cost Long Context Understanding Benchmark for Large Language Models
+
+**Authors:** Zhongzhan Huang et al.  
+**Year:** 2025  
+**Venue:** ACL 2025  
+**Research Area:** Efficient Long-Context Evaluation  
+**Relevance:** High
+
+Introduces a reduced-cost benchmark derived from LongBench. It aims to reduce evaluation cost while maintaining strong correlation with the original benchmark.
+
+**Source:**  
+https://aclanthology.org/2025.acl-long.560/
+
+---
+
+### 20. Counting-Stars: A Multi-evidence, Position-aware, and Scalable Benchmark for Evaluating Long-Context Large Language Models
+
+**Authors:** Mingyang Song, Mao Zheng, and Xuan Luo  
+**Year:** 2025  
+**Venue:** COLING 2025  
+**Research Area:** Position-Aware Long-Context Evaluation  
+**Relevance:** Very High
+
+Introduces a multi-evidence and position-aware benchmark for evaluating long-context language models. It is particularly relevant to studying whether information position and evidence distribution affect model performance.
+
+**Source:**  
+https://aclanthology.org/2025.coling-main.253/
+
+---
+
+# Reference Categories
+
+## Transformer Foundations
+
+- Attention Is All You Need
+- RoFormer: Enhanced Transformer with Rotary Position Embedding
+
+## Retrieval and External Knowledge
+
+- Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+- Needle in a Haystack
+
+## Context-Window Degradation
+
+- Lost in the Middle
+- Efficient Streaming Language Models with Attention Sinks
+- Counting-Stars
+
+## Long-Context Benchmarks
+
+- LongBench
+- RULER
+- L-Eval
+- LooGLE
+- Ada-LEval
+- BAMBOO
+- M4LE
+- Loong
+- Marathon
+- HELMET
+- LongCodeU
+- Ref-Long
+- MiniLongBench
+
+---
+
+# Citation Verification Policy
+
+Every scholarly reference in this repository should be checked against an original publication, publisher page, DOI record, ACL Anthology record, or another authoritative academic source.
+
+The repository distinguishes between:
+
+- **Referenced** — identified as relevant.
+- **Verified** — bibliographic information checked against an authoritative source.
+- **Tested** — the associated implementation or benchmark has actually been executed.
+- **Used** — the source or implementation was used directly in an experiment.
+
+A source must not be described as tested or used unless an actual experiment has been performed.
+
+---
+
+# AI-Assisted Research Disclosure
+
+AI assistance was used during research organization, topic exploration, reference discovery, documentation, and drafting.
+
+AI-generated references were not treated as automatically verified. References should be checked against their original scholarly sources before academic submission.
+
+---
+
+# Research Focus
+
+The references support investigation of:
+
+1. How information position affects long-context retrieval.
+2. How model performance changes as context length increases.
+3. Whether advertised context windows correspond to effective context utilization.
+4. How long-context benchmarks measure retrieval and reasoning.
+5. How long documents and multiple documents affect research synthesis.
+6. How retrieval and attention mechanisms can mitigate context degradation.
+7. How long-context evaluation can be made more realistic and efficient.
+
+The central research question is:
+
+> **How does increasing context length affect the ability of Large Language Models to retrieve, reason over, and synthesize information from long documents?**
+
+---
+
+## Author
 
 **Sandeep Patidar**
 
-**Institution:** Indian Institute of Information Technology Allahabad (IIIT Allahabad)
+**Indian Institute of Information Technology Allahabad (IIIT Allahabad)**
 
 **Department:** IT
 
-**Course/Program:** MNS
-
-**GitHub:** sandeep-patidar-mns
+**Program:** MNS
 
 **Academic Year:** 2026
+
+**GitHub:** sandeep-patidar-mns
