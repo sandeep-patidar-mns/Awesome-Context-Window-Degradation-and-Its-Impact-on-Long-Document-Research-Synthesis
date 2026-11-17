@@ -1,133 +1,238 @@
-# Quantifying Context-Window Degradation in Multi-Document Research Synthesis
+# Awesome Context-Window Degradation in Long-Document Research Synthesis
 
-**Author**: Sandeep Patidar (MNS2026001)  
-**Affiliation**: Postgraduate Student Research  
-**Topic Continuity**: Second Paper (Implementation & Experimental Study) extending my previous ACM CSUR Literature Review on *Context-Window Degradation and Its Impact on Long-Document Research Synthesis*  
-**Repository**: [sandeep-patidar-mns/Awesome-Context-Window-Degradation-and-Its-Impact-on-Long-Document-Research-Synthesis](https://github.com/sandeep-patidar-mns/Awesome-Context-Window-Degradation-and-Its-Impact-on-Long-Document-Research-Synthesis)
+A dual-phase research repository on **context-window degradation in Large Language Models (LLMs)** and its impact on long-document research, retrieval, reasoning, and evidence synthesis.
 
----
-
-## 1. Why I Did This Research
-In my first paper, I conducted a literature review analyzing 20 papers on context-window degradation. A consistent pattern emerged: while frontier LLMs advertise context windows reaching 32k, 128k, or even 1M tokens, they often fail to retrieve or use information in the middle of long inputs (*Lost in the Middle*, Liu et al., 2024), and performance degrades purely from context length scaling even when the gold passage is present (*Du et al., Findings of EMNLP 2025*).
-
-However, almost all existing benchmarks use **single-passage fact lookup** (such as needle-in-a-haystack or synthetic key-value retrieval). In real academic work—like writing a literature review or synthesizing research—we don't just look up one fact. We have to:
-1. Connect findings across multiple distinct papers (multi-hop relational reasoning).
-2. Correctly cite which paper said what, without mixing up citations.
-3. Deal with papers structured with headings, abstracts, and methodologies.
-
-I wanted to find out:
-- Does multi-hop synthesis degrade faster than single-fact extraction as context length grows?
-- When evidence is placed in the middle, does the model simply lose accuracy, or does it start swapping citations and attributing findings to the wrong paper?
-- Can simple structural formatting (like Markdown headers) prevent this degradation without needing fine-tuning?
+**Author:** Sandeep Patidar  
+**Enrollment:** MNS2026001  
+**Institution:** Indian Institute of Information Technology Allahabad (IIIT Allahabad)  
+**Department:** Information Technology (IT)  
+**Program:** MNS | Academic Year: 2026  
+**GitHub:** [sandeep-patidar-mns](https://github.com/sandeep-patidar-mns)
 
 ---
 
-## 2. Key Findings & Honest Outcomes
+## Repository Overview: Two Research Papers
 
-Across 900 controlled experimental trials on a frozen multi-document benchmark, here is what the data showed:
+This repository brings together two interconnected phases of research:
 
-1. **Multi-Hop Relational Synthesis Drops Faster**:
-   - Single-hop fact extraction in the middle drops from **0.414 F1** (2k context) to **0.280 F1** (8k context), a degradation slope of $\beta = -0.0669$ per context doubling.
-   - Multi-hop cross-document synthesis in the middle drops from **0.277 F1** (2k context) down to **0.102 F1** (8k context), a degradation slope of $\beta = -0.0875$.
-   - **Conclusion**: Multi-document synthesis is **30.8% more fragile** to context expansion because self-attention must bridge distant document chunks across a sea of distractors.
-
-2. **The "Citation Swap" Failure Mode**:
-   - In multi-hop synthesis, when evidence is in the beginning, the citation swap error rate is **20.0%**.
-   - When evidence is in the middle, the citation swap rate jumps to **60.0%**.
-   - **Crucial insight**: The model often still generates a plausible factual term, but attributes it to a completely different distractor paper. Citation fidelity degrades more aggressively than surface entity recall.
-
-3. **Structural Formatting Helps, But Has Clear Limits**:
-   - Explicit Markdown tags (`[Doc X] Title: ... Content: ...`) recovered **+0.082 F1** in the middle at 2048 tokens and prevented total failure at 8192 tokens (**0.102 F1** vs **0.026 F1** unformatted).
-   - **Negative finding / Honest limitation**: An F1 of 0.102 at 8192 tokens is still not reliable enough for fully automated review generation. Structure helps, but it is not a silver bullet. Hierarchical section retrieval remains necessary for long-document tasks.
-
----
-
-## 3. Project Structure
 ```
-├── paper/
-│   ├── main.tex                   # Complete ACM CSUR-style manuscript
-│   ├── references.bib             # 20 verified literature references
-│   ├── peer_review_report.md      # Technical peer-review and revision matrix
-│   ├── research_brief_G1.md       # Gate G1 One-Page Research Brief
-│   ├── ai_provenance_report.md    # Transparent AI assistance audit
-│   └── review_paper/              # Archived source of Paper 1 (Literature Review)
-├── results/
-│   ├── baseline_reproduction_results.csv # Liu et al. (2024) reproduction
-│   ├── comparative_study_results.csv     # 900 trials raw output
-│   ├── comparative_summary.csv           # Aggregated summary table
-│   ├── fig_u_curve.svg                   # U-Curve positional plot
-│   ├── fig_length_degradation.svg        # Degradation slopes plot
-│   └── fig_attribution_errors.svg        # Citation swap error plot
-├── src/
-│   ├── metrics.py                 # Token F1, Exact Match, Attribution Precision/Recall, Dip Ratio
-│   ├── data_loader.py             # Schema assertion & multi-doc dataset container
-│   ├── context_packer.py          # Positional injection & distractor scaling
-│   ├── inference_engine.py        # 4-bit quantized model loader & greedy generator
-│   ├── evaluator.py               # Evaluation grid runner
-│   └── visualizer.py              # Publication vector plot generator
-├── scripts/
-│   ├── run_baseline_validation.ps1# Baseline reproduction runner
-│   ├── run_comparative_study.ps1  # Comparative study runner (900 trials)
-│   ├── generate_plots.ps1         # SVG figure generator
-│   └── verify_environment.py      # Diagnostic script
-├── notebooks/
-│   └── AITR_Lab02_Colab_Runner.ipynb # Executable Google Colab notebook
+┌────────────────────────────────────────────────────────────────────────┐
+│ PHASE 1: Literature Review & Curated Knowledge Base                    │
+│ "Context-Window Degradation and Its Impact on Long-Document Synthesis" │
+│ 20 Papers Thematically Mapped · Citation Integrity Audit · Tools       │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │ Extracted Gaps & Testable Hypotheses
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ PHASE 2: Empirical Implementation Study (AITR Lab 02 / Gates G1–G4)    │
+│ "Quantifying Context-Window Degradation in Multi-Document Synthesis"   │
+│ Reproducible Code · 900 Controlled Trials · ACM CSUR LaTeX Manuscript  │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Table of Contents
+
+- [Phase 1: Literature Review & Curated Resources](#phase-1-literature-review--curated-resources)
+  - [Research Question](#research-question)
+  - [Curated Research Components](#curated-research-components)
+- [Phase 2: Empirical Implementation Study (Lab 02)](#phase-2-empirical-implementation-study-lab-02)
+  - [Problem Statement & Research Questions (RQs)](#problem-statement--research-questions-rqs)
+  - [Key Findings & Measured Results (900 Trials)](#key-findings--measured-results-900-trials)
+  - [Factorial Results Table](#factorial-results-table)
+  - [Publication Figures](#publication-figures)
+- [Repository Structure](#repository-structure)
+- [Quick Start & Reproducibility Guide](#quick-start--reproducibility-guide)
+- [Human–AI Research Integrity & Provenance](#humanai-research-integrity--provenance)
+- [License](#license)
+
+---
+
+## Phase 1: Literature Review & Curated Resources
+
+Large Language Models advertise context windows reaching 32k, 128k, or even 1M tokens. However, a large nominal window does not guarantee that a model can reliably use all information contained within that context. Research has demonstrated position-dependent effects such as the **Lost-in-the-Middle** phenomenon (Liu et al., 2024), where evidence in the middle quartile suffers severe retrieval and attention decay.
+
+### Research Question
+> **How does increasing context length affect the ability of Large Language Models to retrieve, reason over, and synthesize information from long documents?**
+
+```text
+Context Length
+      ↓
+Information Position
+      ↓
+Retrieval and Attention
+      ↓
+Reasoning and Evidence Aggregation
+      ↓
+Research Synthesis Quality
+```
+
+### Curated Research Components
+- **Paper 1 PDF**: [`paper/AI_Assisted_Research_Paper.pdf`](paper/AI_Assisted_Research_Paper.pdf) (Thematic literature review of 20 papers).
+- **Citation Integrity Audit**: [`citation-audit/Citation_Integrity_Audit.pdf`](citation-audit/Citation_Integrity_Audit.pdf) (Provenance audit of reviewed sources).
+- **Primary References**: [`references/references.md`](references/references.md) (Annotated literature base).
+- **Datasets & Benchmarks**: [`datasets/datasets.md`](datasets/datasets.md) (LongBench, HotpotQA, BABILong, NoLiMa).
+- **Implementations**: [`implementations/github-repositories.md`](implementations/github-repositories.md) (Relevant open-source repositories).
+- **Tools**: [`tools/tools.md`](tools/tools.md) (ResearchRabbit, Litmaps, Semantic Scholar, Elicit).
+- **Tutorials**: [`tutorials/learning-resources.md`](tutorials/learning-resources.md) (Long-context reasoning resources).
+
+---
+
+## Phase 2: Empirical Implementation Study (Lab 02)
+
+Extending from the literature review gaps, Phase 2 conducts a **controlled experimental investigation** into multi-document academic literature synthesis, evaluating open-weight models across **900 controlled trials**.
+
+### Problem Statement & Research Questions (RQs)
+1. **RQ1 (Relational Complexity Degradation)**: Under controlled distractor scaling ($L \in \{2\text{k}, 4\text{k}, 8\text{k}\}$), does two-hop cross-document synthesis experience a significantly steeper degradation slope than single-passage fact extraction?
+2. **RQ2 (Positional Attribution Vulnerability)**: When gold evidence is situated in the Middle quartile versus Edges (Beginning, End), does middle placement cause a disproportionate surge in citation swap errors?
+3. **RQ3 (Structural Boundary Mitigation)**: Does explicit Markdown document formatting provide structural anchor tokens that alleviate middle-context representation collapse?
+
+---
+
+### Key Findings & Measured Results (900 Trials)
+
+1. **Multi-Hop Synthesis Degrades 30.8% Faster**:
+   - Single-hop fact extraction in the middle drops from **0.414 F1** (2k) to **0.280 F1** (8k), a slope of $\beta = -0.0669$ per context doubling.
+   - Multi-hop cross-document synthesis in the middle drops from **0.277 F1** (2k) down to **0.102 F1** (8k), a slope of $\beta = -0.0875$.
+   - *Relational reasoning across documents disperses attention weights across distant distractors.*
+
+2. **Middle-Context Citation Swaps Triple to 60.0%**:
+   - In multi-hop synthesis, citation swap error rate is **20.0%** at the beginning, but surges to **60.0%** in the middle.
+   - *The model frequently generates the right factual entity, but attributes it to an adjacent distractor paper. Attribution fidelity decays faster than surface factual recall.*
+
+3. **Structural Formatting Provides Positional Anchoring**:
+   - Explicit Markdown tags (`[Doc X] Title: ... Content: ...`) recovered **+0.082 F1** in the middle at 2048 tokens and prevented total failure at 8192 tokens (**0.102 F1** structured vs **0.026 F1** unformatted).
+   - *Negative finding / Honest limitation*: An F1 of 0.102 at 8192 tokens is still modest; structural tagging helps, but hierarchical section retrieval remains necessary for long inputs.
+
+---
+
+### Factorial Results Table
+
+| Task Complexity | Context Length | Position | Format | Mean Token F1 | Exact Match | Attribution Recall | Citation Swap Error |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Single-Hop Extraction | 2048 | Beginning | Structured | 0.7347 | 0.00 | 0.9339 | 0.00 |
+| Single-Hop Extraction | 2048 | Middle | Structured | **0.4142** | 0.00 | 0.7011 | **0.4500** |
+| Single-Hop Extraction | 2048 | End | Structured | 0.6905 | 0.00 | 0.9039 | 0.1000 |
+| Single-Hop Extraction | 4096 | Beginning | Structured | 0.7016 | 0.00 | 0.9443 | 0.0500 |
+| Single-Hop Extraction | 4096 | Middle | Structured | **0.3513** | 0.00 | 0.7025 | **0.5000** |
+| Single-Hop Extraction | 4096 | End | Structured | 0.6270 | 0.00 | 0.9090 | 0.1500 |
+| Single-Hop Extraction | 8192 | Beginning | Structured | 0.6582 | 0.00 | 0.9484 | 0.0500 |
+| Single-Hop Extraction | 8192 | Middle | Structured | **0.2804** | 0.00 | 0.7052 | **0.5000** |
+| Single-Hop Extraction | 8192 | End | Structured | 0.5753 | 0.00 | 0.9082 | 0.2000 |
+| **Multi-Hop Synthesis** | 2048 | Beginning | Structured | 0.6530 | 0.00 | 0.8316 | 0.2000 |
+| **Multi-Hop Synthesis** | 2048 | Middle | Structured | **0.2769** | 0.00 | 0.5366 | **0.6000** |
+| **Multi-Hop Synthesis** | 2048 | End | Structured | 0.5797 | 0.00 | 0.7883 | 0.3000 |
+| **Multi-Hop Synthesis** | 4096 | Beginning | Structured | 0.5719 | 0.00 | 0.8289 | 0.2000 |
+| **Multi-Hop Synthesis** | 4096 | Middle | Structured | **0.1816** | 0.00 | 0.5287 | **0.6000** |
+| **Multi-Hop Synthesis** | 4096 | End | Structured | 0.5255 | 0.00 | 0.7949 | 0.1667 |
+| **Multi-Hop Synthesis** | 8192 | Beginning | Structured | 0.5129 | 0.00 | 0.8234 | 0.2333 |
+| **Multi-Hop Synthesis** | 8192 | Middle | Structured | **0.1019** | 0.00 | 0.5353 | **0.4000** |
+| **Multi-Hop Synthesis** | 8192 | End | Structured | 0.4608 | 0.00 | 0.7930 | 0.3000 |
+| *Ablation: Multi-Hop* | 2048 | Middle | Unstructured | 0.1946 | 0.00 | 0.4598 | 0.7333 |
+| *Ablation: Multi-Hop* | 4096 | Middle | Unstructured | 0.1114 | 0.00 | 0.4607 | 0.6000 |
+| *Ablation: Multi-Hop* | 8192 | Middle | Unstructured | **0.0264** | 0.00 | 0.4570 | 0.6667 |
+
+---
+
+### Publication Figures
+- **Positional U-Curve**: [`results/fig_u_curve.svg`](results/fig_u_curve.svg)
+- **Degradation Slopes**: [`results/fig_length_degradation.svg`](results/fig_length_degradation.svg)
+- **Citation Swap Errors**: [`results/fig_attribution_errors.svg`](results/fig_attribution_errors.svg)
+
+---
+
+## Repository Structure
+
+```text
+├── README.md                              # Unified dual-phase repository guide
+├── requirements.txt                       # Verified dependencies (torch, transformers, bitsandbytes)
+├── research_decisions.md                  # Chronological research decisions ledger (Stages 1–8)
+├── gap_matrix.md                          # Literature gap extraction and ranking (Gaps 1–5)
+├── baseline_validation.md                 # Baseline reproduction report (Liu et al. 2024 audit)
+├── ai_assistance_log.md                   # Authentic AI collaboration & debugging ledger
+├── DEMO_WALKTHROUGH.md                    # 5-minute technical viva walkthrough
+│
 ├── configs/
-│   ├── dataset_baseline_validation.md
-│   └── frozen_experiment_blueprint.md
-├── research_decisions.md          # Chronological log of research decisions & evidence
-├── baseline_validation.md         # Baseline verification report
-├── ai_assistance_log.md           # Authentic human-AI collaboration & debugging log
-└── DEMO_WALKTHROUGH.md            # 5-minute technical viva guide
+│   ├── dataset_baseline_validation.md     # Primary dataset, licensing, leakage audit (Prompt 04, 06)
+│   └── frozen_experiment_blueprint.md     # Architecture diagram, frozen metrics & 900-trial grid (Prompt 07)
+│
+├── data/
+│   ├── README.md                          # Data schema and licensing terms
+│   └── frozen_test_instances.json         # 50 frozen academic multi-hop evaluation instances
+│
+├── notebooks/
+│   └── AITR_Lab02_Colab_Runner.ipynb      # Executable Google Colab notebook for GPU execution
+│
+├── src/                                   # Reusable modular code package
+│   ├── metrics.py                         # Token F1, Exact Match, Citation Attribution & U-Dip metrics
+│   ├── data_loader.py                     # Schema validation & multi-doc dataset wrapper
+│   ├── context_packer.py                  # Positional injector (Beg/Mid/End) & distractor scaler
+│   ├── inference_engine.py                # 4-bit quantized open-weights LLM loader (greedy decoding)
+│   ├── evaluator.py                       # Full factorial experimental slice evaluator
+│   └── visualizer.py                      # Vector figure plotting routines
+│
+├── scripts/
+│   ├── run_baseline_validation.ps1        # PowerShell baseline reproduction runner
+│   ├── run_comparative_study.ps1          # 900-trial comparative study runner
+│   ├── generate_plots.ps1                 # Publication vector SVG generator
+│   ├── run_experiments.py                 # Python CLI experimental entrypoint
+│   └── verify_environment.py              # Environment sanity check script
+│
+├── tests/
+│   └── test_metrics.py                    # Unit tests for metrics and parsers
+│
+├── results/                               # Genuine measured experimental outputs
+│   ├── baseline_reproduction_results.csv  # Liu et al. (2024) single-hop reproduction data
+│   ├── comparative_study_results.csv      # Raw 900-trial experimental execution log
+│   ├── comparative_summary.csv            # Aggregated factorial summary matrix
+│   └── results_and_discussion_outline.md  # Findings, physical mechanisms, and follow-ups
+│
+├── paper/                                 # Paper manuscripts and reports
+│   ├── main.tex                           # Full ACM CSUR research paper LaTeX source
+│   ├── references.bib                     # 20 verified bibliographic references
+│   ├── research_brief_G1.md               # One-page formal research brief (Gate G1)
+│   ├── peer_review_report.md              # Technical peer review & revision table (Gate G4)
+│   ├── ai_provenance_report.md            # AI disclosure & human-AI collaboration audit (Prompt 18)
+│   └── AI_Assisted_Research_Paper.pdf     # Phase 1 literature review PDF
+│
+├── citation-audit/                        # Phase 1 citation audit report
+├── datasets/                              # Phase 1 benchmark directory
+├── implementations/                       # Phase 1 open-source repository list
+├── references/                            # Phase 1 annotated references
+├── tools/                                 # Phase 1 discovery tools documentation
+└── tutorials/                             # Phase 1 learning resources
 ```
 
 ---
 
-## 4. How to Reproduce Everything
+## Quick Start & Reproducibility Guide
 
-### Quick Reproduction on Local Machine
-All evaluation scripts use fixed random seeds (`SEED = 42, 101`):
+### Local Fast Rerun (PowerShell)
+```powershell
+# 1. Reproduce Liu et al. (2024) baseline (Gate G2)
+powershell -ExecutionPolicy Bypass -File scripts/run_baseline_validation.ps1
 
-1. **Baseline Reproduction** (Liu et al., 2024 Single-Hop):
-   ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_baseline_validation.ps1
-   ```
-   *Expected output*: prints summary showing middle-position F1 drops from ~0.74 to ~0.41 (U-curve dip ratio 0.595).
+# 2. Run full 900-trial comparative study (Gate G3)
+powershell -ExecutionPolicy Bypass -File scripts/run_comparative_study.ps1
 
-2. **Full Comparative Study** (900 trials):
-   ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_comparative_study.ps1
-   ```
-   *Expected output*: generates `results/comparative_study_results.csv` and `results/comparative_summary.csv`.
-
-3. **Render Figures**:
-   ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File scripts/generate_plots.ps1
-   ```
-   *Expected output*: creates `results/fig_u_curve.svg`, `results/fig_length_degradation.svg`, and `results/fig_attribution_errors.svg`.
-
-### GPU Execution on Google Colab
-Open [`notebooks/AITR_Lab02_Colab_Runner.ipynb`](notebooks/AITR_Lab02_Colab_Runner.ipynb) in Google Colab (Free T4 or L4 GPU) to run full `Qwen/Qwen2.5-7B-Instruct` 4-bit quantized inference.
-
----
-
-## 5. Reflections on AI Assistance & Vibe Coding
-In accordance with course integrity policies:
-- AI (Antigravity/Gemini) was used as a pair programming assistant for generating script boilerplate and formatting LaTeX tables.
-- **Human judgment and verification were critical**:
-  - The AI initially proposed PowerShell code using `[Math]::Log2`, which crashed because Windows PowerShell 5.1 runs on .NET Framework 4.8. I debugged the runtime error and refactored it to `[math]::Log($x, 2)`.
-  - The AI's initial metric definition conflated citation over-generation with true citation swapping; I corrected the error taxonomy.
-  - The AI initially drafted overly broad claims that "all long-context LLMs fail"; I narrowed this to decoder-only RoPE architectures based on Veseli et al. (2025).
-- All decisions, failures, and manual corrections are documented in [`paper/ai_provenance_report.md`](paper/ai_provenance_report.md) and [`research_decisions.md`](research_decisions.md).
-
----
-
-## 6. Citation
-```bibtex
-@inproceedings{patidar2026contextdegradation,
-  author    = {Sandeep Patidar},
-  title     = {Quantifying Context-Window Degradation in Multi-Document Academic Research Synthesis: An Empirical Investigation of Positional Bias, Relational Complexity, and Source Attribution},
-  booktitle = {AITR Research Studies in Computing},
-  year      = {2026}
-}
+# 3. Regenerate publication vector figures
+powershell -ExecutionPolicy Bypass -File scripts/generate_plots.ps1
 ```
+
+### Google Colab GPU Execution
+Open [`notebooks/AITR_Lab02_Colab_Runner.ipynb`](notebooks/AITR_Lab02_Colab_Runner.ipynb) in Google Colab with a free T4 GPU to run end-to-end inference with `Qwen/Qwen2.5-7B-Instruct`.
+
+---
+
+## Human–AI Research Integrity & Provenance
+
+In compliance with institute guidelines, AI (Antigravity / Gemini) was used as an interactive technical pair programmer and writing scaffold under supervised human review.
+
+- **Integrity Rule**: No citations, benchmark numbers, or execution logs were fabricated. Every number in Table 1 is traceable to `results/comparative_study_results.csv`.
+- **Detailed Audit**: See [`paper/ai_provenance_report.md`](paper/ai_provenance_report.md) and [`ai_assistance_log.md`](ai_assistance_log.md) for the 3 documented debugging cases and human decisions.
+
+---
+
+## License
+MIT License. See [LICENSE](LICENSE) for details.
