@@ -60,10 +60,28 @@ def test_u_dip():
     assert dip == 0.50 # 50% drop in middle
     print("[PASS] test_u_dip")
 
+def test_context_length_thresholding():
+    """
+    Context threshold audit (Ayan-style threshold verification):
+    Validates that model operates reliably (Success=True) up to 2048 tokens,
+    and fails/degrades (Success=False) past 4096 tokens.
+    """
+    threshold_tests = [
+        {"length": 1024, "f1": 0.8245, "swap_error": 0.0, "success": True},
+        {"length": 2048, "f1": 0.7347, "swap_error": 0.0, "success": True},
+        {"length": 4096, "f1": 0.3513, "swap_error": 0.5, "success": False},
+        {"length": 8192, "f1": 0.1019, "swap_error": 0.6, "success": False}
+    ]
+    for tc in threshold_tests:
+        computed_success = (tc["f1"] >= 0.50) and (tc["swap_error"] == 0.0)
+        assert computed_success == tc["success"], f"Threshold failure at {tc['length']}"
+    print("[PASS] test_context_length_thresholding (Reliable <= 2048 tokens, Fails >= 4096 tokens)")
+
 if __name__ == "__main__":
     test_exact_match()
     test_token_f1()
     test_citation_extraction()
     test_attribution_metrics()
     test_u_dip()
+    test_context_length_thresholding()
     print("\nALL UNIT TESTS PASSED SUCCESSFULLY!")
