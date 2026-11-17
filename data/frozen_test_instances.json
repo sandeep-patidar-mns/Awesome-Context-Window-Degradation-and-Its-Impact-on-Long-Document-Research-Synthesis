@@ -1,0 +1,1262 @@
+﻿[
+    {
+        "id":  "frozen_test_001",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_002",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_003",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_004",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_005",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_006",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_007",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_008",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_009",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_010",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_011",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_012",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_013",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_014",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_015",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_016",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_017",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_018",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_019",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_020",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_021",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_022",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_023",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_024",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_025",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_026",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_027",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_028",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_029",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_030",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_031",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_032",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_033",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_034",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_035",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_036",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_037",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_038",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_039",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_040",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_041",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_042",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_043",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_044",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_045",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_046",
+        "answer":  "Positional Interpolation",
+        "gold_docs":  [
+                          {
+                              "text":  "Chen et al. (2023) introduced Positional Interpolation (PI) to linearly scale RoPE embeddings, enabling context extension up to 32k tokens.",
+                              "title":  "Extending Context Window of LLMs via Positional Interpolation"
+                          },
+                          {
+                              "text":  "Du et al. (2025) analyzed models extended via Positional Interpolation and observed steep performance drops when context token counts exceeded 8k, proving context length hurts performance even when gold evidence is perfectly retrieved.",
+                              "title":  "Context Length Alone Hurts LLM Performance Despite Perfect Retrieval"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which positional extension method was evaluated by Du et al. (2025) as failing under long contexts despite perfect retrieval?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Vaswani et al. (2017) presented the Transformer architecture based entirely on self-attention mechanisms.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Press et al. (2022) proposed ALiBi, penalizing attention between distant tokens with linear biases.",
+                                    "title":  "Train Short, Test Long with ALiBi"
+                                },
+                                {
+                                    "text":  "Tang et al. (2025) introduced LOGO, an efficient preference optimization framework.",
+                                    "title":  "LOGO: Long Context Alignment"
+                                },
+                                {
+                                    "text":  "Yan et al. (2025) proposed Adamas, a hardware-efficient sparse attention algorithm.",
+                                    "title":  "Adamas: Hadamard Sparse Attention"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_047",
+        "answer":  "degradation when evidence lacks surface lexical cues or is placed in middle context positions",
+        "gold_docs":  [
+                          {
+                              "text":  "Liu et al. (2024) observed that retrieval accuracy degrades by over 30% when target documents are situated in the middle of long input sequences.",
+                              "title":  "Lost in the Middle: How Language Models Use Long Contexts"
+                          },
+                          {
+                              "text":  "Modarressi et al. (2025) proved that models relying on surface lexical matching fail when evidence requires semantic abstraction across long sequences.",
+                              "title":  "NoLiMa: Long-Context Evaluation Beyond Literal Matching"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "What common limitation is shared between the benchmark findings of Liu et al. (2024) and Modarressi et al. (2025)?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Dsouza et al. (2024) proposed an inference-time calibration method.",
+                                    "title":  "Evaluating Working Memory Windows"
+                                },
+                                {
+                                    "text":  "Kuratov et al. (2024) benchmarked LLMs on complex multi-hop algorithmic deduction.",
+                                    "title":  "BABILong Reasoning Limits"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_048",
+        "answer":  "128K context",
+        "gold_docs":  [
+                          {
+                              "text":  "Stallone et al. (2024) demonstrated that Granite Code models could be effectively scaled to a 128K context window through curriculum learning and attention adaptation.",
+                              "title":  "Scaling Granite Code Models to 128K Context"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "What maximum context window was achieved by Stallone et al. (2024) in the Granite code models?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "The original transformer evaluated sequence lengths of 512 tokens during training on WMT translation tasks.",
+                                    "title":  "Attention Is All You Need"
+                                },
+                                {
+                                    "text":  "Bai et al. (2024) evaluated long-context models across tasks ranging between 4k and 32k tokens.",
+                                    "title":  "LongBench"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_049",
+        "answer":  "LOGO preference optimization built upon Direct Preference Optimization (DPO)",
+        "gold_docs":  [
+                          {
+                              "text":  "Rafailov et al. (2023) introduced DPO to optimize policy preferences directly using cross-entropy loss without training a separate reward model.",
+                              "title":  "Direct Preference Optimization for Language Models"
+                          },
+                          {
+                              "text":  "Tang et al. (2025) extended DPO to long contexts by proposing LOGO, which introduces chunk-level contrastive alignment.",
+                              "title":  "LOGO: Long Context Alignment via Efficient Preference Optimization"
+                          }
+                      ],
+        "type":  "multi_hop_synthesis",
+        "question":  "Which optimization technique did Tang et al. (2025) propose to resolve context degradation, and what method did they build upon?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Yan et al. (2025) focused on sparse matrix operations rather than preference optimization.",
+                                    "title":  "Adamas Sparse Attention"
+                                },
+                                {
+                                    "text":  "Tian et al. (2025) investigated data mixing ratios during pre-training.",
+                                    "title":  "Untie the Knots"
+                                }
+                            ]
+    },
+    {
+        "id":  "frozen_test_050",
+        "answer":  "positional biases shift dynamically rather than remaining constant",
+        "gold_docs":  [
+                          {
+                              "text":  "Veseli et al. (2025) demonstrated that positional biases shift dynamically as sequences approach the context boundary, altering the standard U-shaped degradation curve.",
+                              "title":  "Positional Biases Shift as Inputs Approach Context Window Limits"
+                          }
+                      ],
+        "type":  "single_hop_extraction",
+        "question":  "According to Veseli et al. (2025), what happens to positional biases as inputs approach context limits?",
+        "distractor_docs":  [
+                                {
+                                    "text":  "Liu et al. (2024) examined fixed context lengths and observed static U-shaped curves where beginning and end positions are favored.",
+                                    "title":  "Lost in the Middle"
+                                }
+                            ]
+    }
+]
