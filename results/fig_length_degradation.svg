@@ -1,0 +1,56 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <text x="375" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#222222">Context Length Degradation Slope: Single-Hop vs. Multi-Hop Synthesis</text>
+  <text x="375" y="52" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">Comparison of degradation rate across sequence doubling (Middle Position)</text>
+  
+  <!-- Axes -->
+  <line x1="80" y1="370" x2="680" y2="370" stroke="#333333" stroke-width="1.5" />
+  <line x1="80" y1="370" x2="80" y2="70" stroke="#333333" stroke-width="1.5" />
+  
+  <text x="70" y="375" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.0</text>
+  <text x="70" y="300" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.1</text>
+  <text x="70" y="225" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.2</text>
+  <text x="70" y="150" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.3</text>
+  <text x="70" y="75" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.4</text>
+  
+  <text x="30" y="220" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" transform="rotate(-90 30,220)" fill="#333333">Mean Token F1</text>
+  
+  <!-- X Labels -->
+  <text x="180" y="395" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">2048 Tokens</text>
+  <text x="380" y="395" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">4096 Tokens</text>
+  <text x="580" y="395" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">8192 Tokens</text>
+  
+  <!-- Single Hop Curve (Blue) -> 2k: 0.414 (y=60), 4k: 0.351 (y=107), 8k: 0.280 (y=160) -->
+  <path d="M 180 60 L 380 107 L 580 160" fill="none" stroke="#1f77b4" stroke-width="3" />
+  <rect x="175" y="55" width="10" height="10" fill="#1f77b4" />
+  <rect x="375" y="102" width="10" height="10" fill="#1f77b4" />
+  <rect x="575" y="155" width="10" height="10" fill="#1f77b4" />
+  <text x="180" y="45" font-family="Arial" font-size="11" text-anchor="middle" fill="#1f77b4">0.414</text>
+  <text x="380" y="95" font-family="Arial" font-size="11" text-anchor="middle" fill="#1f77b4">0.351</text>
+  <text x="580" y="145" font-family="Arial" font-size="11" text-anchor="middle" fill="#1f77b4">0.280</text>
+  
+  <!-- Multi Hop Structured Curve (Red) -> 2k: 0.277 (y=162), 4k: 0.182 (y=234), 8k: 0.102 (y=294) -->
+  <path d="M 180 162 L 380 234 L 580 294" fill="none" stroke="#d62728" stroke-width="3" />
+  <circle cx="180" cy="162" r="5" fill="#d62728" />
+  <circle cx="380" cy="234" r="5" fill="#d62728" />
+  <circle cx="580" cy="294" r="5" fill="#d62728" />
+  <text x="180" y="150" font-family="Arial" font-size="11" text-anchor="middle" fill="#d62728">0.277</text>
+  <text x="380" y="222" font-family="Arial" font-size="11" text-anchor="middle" fill="#d62728">0.182</text>
+  <text x="580" y="282" font-family="Arial" font-size="11" text-anchor="middle" fill="#d62728">0.102</text>
+  
+  <!-- Multi Hop Raw (Unstructured) -> 2k: 0.195 (y=224), 4k: 0.111 (y=287), 8k: 0.026 (y=350) -->
+  <path d="M 180 224 L 380 287 L 580 350" fill="none" stroke="#7f7f7f" stroke-width="2" stroke-dasharray="4,4" />
+  <circle cx="180" cy="224" r="4" fill="#7f7f7f" />
+  <circle cx="380" cy="287" r="4" fill="#7f7f7f" />
+  <circle cx="580" cy="350" r="4" fill="#7f7f7f" />
+  <text x="580" y="342" font-family="Arial" font-size="11" text-anchor="middle" fill="#7f7f7f">0.026</text>
+  
+  <!-- Legend -->
+  <rect x="420" y="75" width="250" height="90" fill="#f8f9fa" stroke="#cccccc" rx="4" />
+  <line x1="435" y1="95" x2="465" y2="95" stroke="#1f77b4" stroke-width="3" />
+  <text x="475" y="99" font-family="Arial" font-size="11" fill="#333333">Single-Hop Fact Extraction</text>
+  <line x1="435" y1="115" x2="465" y2="115" stroke="#d62728" stroke-width="3" />
+  <text x="475" y="119" font-family="Arial" font-size="11" fill="#333333">Multi-Hop Synthesis (Structured)</text>
+  <line x1="435" y1="135" x2="465" y2="135" stroke="#7f7f7f" stroke-width="2" stroke-dasharray="4,4" />
+  <text x="475" y="139" font-family="Arial" font-size="11" fill="#333333">Multi-Hop Synthesis (Unstructured)</text>
+</svg>

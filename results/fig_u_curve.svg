@@ -1,0 +1,58 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <text x="375" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#222222">Positional Degradation ('Lost in the Middle') Across Context Lengths</text>
+  <text x="375" y="52" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">Evaluated on Multi-Hop Research Synthesis (Structured Context)</text>
+  
+  <!-- Axes -->
+  <line x1="80" y1="370" x2="680" y2="370" stroke="#333333" stroke-width="1.5" />
+  <line x1="80" y1="370" x2="80" y2="70" stroke="#333333" stroke-width="1.5" />
+  
+  <!-- Y-Axis Ticks & Grid -->
+  <line x1="80" y1="370" x2="680" y2="370" stroke="#eeeeee" stroke-dasharray="4" />
+  <text x="70" y="375" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.0</text>
+  <line x1="80" y1="300" x2="680" y2="300" stroke="#eeeeee" stroke-dasharray="4" />
+  <text x="70" y="305" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.2</text>
+  <line x1="80" y1="230" x2="680" y2="230" stroke="#eeeeee" stroke-dasharray="4" />
+  <text x="70" y="235" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.4</text>
+  <line x1="80" y1="160" x2="680" y2="160" stroke="#eeeeee" stroke-dasharray="4" />
+  <text x="70" y="165" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.6</text>
+  <line x1="80" y1="90" x2="680" y2="90" stroke="#eeeeee" stroke-dasharray="4" />
+  <text x="70" y="95" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0.8</text>
+  
+  <text x="30" y="220" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" transform="rotate(-90 30,220)" fill="#333333">Mean Token F1</text>
+  
+  <!-- X-Axis Labels -->
+  <text x="180" y="395" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">Beginning [0–25%]</text>
+  <text x="380" y="395" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">Middle [25–75%]</text>
+  <text x="580" y="395" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">End [75–100%]</text>
+  
+  <!-- 2048 Tokens Curve (Blue) -> Beg: 0.653 (y=141), Mid: 0.277 (y=273), End: 0.580 (y=167) -->
+  <path d="M 180 141 L 380 273 L 580 167" fill="none" stroke="#1f77b4" stroke-width="3" />
+  <circle cx="180" cy="141" r="5" fill="#1f77b4" />
+  <circle cx="380" cy="273" r="5" fill="#1f77b4" />
+  <circle cx="580" cy="167" r="5" fill="#1f77b4" />
+  <text x="180" y="130" font-family="Arial" font-size="11" text-anchor="middle" fill="#1f77b4">0.653</text>
+  <text x="380" y="295" font-family="Arial" font-size="11" text-anchor="middle" fill="#1f77b4">0.277</text>
+  <text x="580" y="155" font-family="Arial" font-size="11" text-anchor="middle" fill="#1f77b4">0.580</text>
+  
+  <!-- 4096 Tokens Curve (Orange) -> Beg: 0.572 (y=170), Mid: 0.182 (y=306), End: 0.526 (y=186) -->
+  <path d="M 180 170 L 380 306 L 580 186" fill="none" stroke="#ff7f0e" stroke-width="3" stroke-dasharray="5,3" />
+  <circle cx="180" cy="170" r="5" fill="#ff7f0e" />
+  <circle cx="380" cy="306" r="5" fill="#ff7f0e" />
+  <circle cx="580" cy="186" r="5" fill="#ff7f0e" />
+  
+  <!-- 8192 Tokens Curve (Red) -> Beg: 0.513 (y=190), Mid: 0.102 (y=334), End: 0.461 (y=209) -->
+  <path d="M 180 190 L 380 334 L 580 209" fill="none" stroke="#d62728" stroke-width="3" stroke-dasharray="2,2" />
+  <circle cx="180" cy="190" r="5" fill="#d62728" />
+  <circle cx="380" cy="334" r="5" fill="#d62728" />
+  <circle cx="580" cy="209" r="5" fill="#d62728" />
+  
+  <!-- Legend -->
+  <rect x="480" y="75" width="190" height="85" fill="#f8f9fa" stroke="#cccccc" rx="4" />
+  <line x1="495" y1="95" x2="525" y2="95" stroke="#1f77b4" stroke-width="3" />
+  <text x="535" y="99" font-family="Arial" font-size="11" fill="#333333">2048 tokens</text>
+  <line x1="495" y1="115" x2="525" y2="115" stroke="#ff7f0e" stroke-width="3" stroke-dasharray="5,3" />
+  <text x="535" y="119" font-family="Arial" font-size="11" fill="#333333">4096 tokens</text>
+  <line x1="495" y1="135" x2="525" y2="135" stroke="#d62728" stroke-width="3" stroke-dasharray="2,2" />
+  <text x="535" y="139" font-family="Arial" font-size="11" fill="#333333">8192 tokens</text>
+</svg>
