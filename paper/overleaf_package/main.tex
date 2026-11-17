@@ -1,0 +1,155 @@
+\documentclass[manuscript,screen,oneside]{acmart}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc}
+
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\renewcommand{\footnotetextauthorsaddresses}[1]{}
+\renewcommand{\footnotetextcopyrightpermission}[1]{}
+\acmDOI{}
+\acmISBN{}
+\acmYear{2026}
+\copyrightyear{2026}
+\acmJournal{CSUR}
+
+\title{Quantifying Context-Window Degradation in Multi-Document Academic Research Synthesis: An Empirical Investigation of Positional Bias, Relational Complexity, and Source Attribution}
+
+\author{Sandeep Patidar}
+\email{mns2026001@iiita.ac.in}
+\affiliation{%
+  \institution{Indian Institute of Information Technology Allahabad}
+  \city{Prayagraj}
+  \state{Uttar Pradesh}
+  \country{India}
+}
+
+\begin{abstract}
+While long-context large language models (LLMs) advertise nominal capacity exceeding 32k to 128k tokens, empirical evidence confirms that raw sequence length does not guarantee effective information utilization. Prior evaluations predominantly isolate single-needle retrieval amidst distractor text. In this paper, we conduct a controlled empirical investigation into multi-document research synthesis, where evidence is distributed across distinct academic papers and demands joint relational reasoning alongside faithful source attribution. Replicating the positional degradation protocols of Liu et al. (2024) and Du et al. (2025), we evaluate open-weight models across 900 controlled experimental trials varying context length (2k, 4k, 8k tokens), relative evidence position (Beginning, Middle, End), reasoning depth (Single-Hop Extraction vs. Two-Hop Cross-Document Synthesis), and structural document formatting. Our measured findings establish three core results: (1) two-hop relational synthesis suffers an accelerated degradation slope ($\beta = -0.0875$ F1 points per context doubling) that is 30.8\% steeper than single-hop fact extraction ($\beta = -0.0669$); (2) middle evidence placement triggers a three-fold surge in citation swap errors (jumping from 20.0\% to 60.0\%), demonstrating that source attribution fidelity degrades more aggressively than surface factual recall; and (3) explicit Markdown document boundaries provide structural anchor tokens that mitigate middle-context degradation by +0.0823 F1 points (+42.3\% relative gain) at 2048 tokens. These empirical findings substantiate that context degradation in multi-paper synthesis is fundamentally governed by relational attention dispersion rather than sequence length alone.
+\end{abstract}
+
+\keywords{long-context language models, context degradation, lost-in-the-middle, multi-document synthesis, source attribution, citation faithfulness}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+The scaling of transformer context windows has generated models nominally capable of processing complete research monographs and extensive literature libraries \cite{vaswani2017attention,chen2023extending}. However, a critical gap persists between nominal token capacity and effective context utilization. In academic literature review workflows, a researcher relies on an automated assistant not merely to retrieve an isolated sentence, but to synthesize methodological trade-offs, contrast empirical findings across disparate papers, and preserve strict source attribution without hallucinating citations.
+
+Foundational studies by Liu et al. \cite{liu2024lost} established the ``Lost in the Middle'' phenomenon, identifying a pronounced U-shaped curve wherein evidence located in the interior of long prompts is retrieved with significantly lower fidelity than edge-positioned tokens. Concurrently, Du et al. \cite{du2025contextlength} demonstrated that increasing context length alone depresses model performance even under oracle conditions where all relevant passages are guaranteed to be present. Yet, the overwhelming majority of existing benchmarks (e.g., standard needle-in-a-haystack evaluations) restrict their scope to single-passage fact lookup. 
+
+In this work, we transition from our prior literature review to an experimental implementation study answering three specific research questions:
+\begin{itemize}
+    \item \textbf{RQ1 (Relational Complexity Degradation)}: Does multi-hop evidence synthesis spanning distinct papers exhibit a steeper performance degradation slope than single-passage fact extraction under identical distractor scaling?
+    \item \textbf{RQ2 (Positional Attribution Vulnerability)}: Does placing target evidence in the middle context quartile disproportionately elevate citation misattribution (attributing facts to distractor papers) compared to factual answer extraction errors?
+    \item \textbf{RQ3 (Structural Boundary Mitigation)}: Does explicit Markdown document formatting provide structural anchor tokens that alleviate middle-context representation collapse compared to flat text concatenation?
+\end{itemize}
+
+Through 900 controlled experimental trials on a frozen multi-document benchmark, we empirically validate our hypotheses, providing exact quantitative curves, error taxonomies, and reproducible ablation evidence.
+
+\section{Related Work}\label{sec:related}
+\subsection{Context Extension versus Usable Capacity}
+Techniques such as ALiBi \cite{press2022train} and Positional Interpolation \cite{chen2023extending} extend sequence lengths by altering positional frequency representations. Similarly, industrial models such as Granite Code scale sequence representations to 128k tokens through staged continual pretraining \cite{stallone2024granite}. Nonetheless, benchmark suites such as LongBench \cite{bai2024longbench} demonstrate that usable context remains severely constrained across complex tasks.
+
+\subsection{Positional Bias and Semantic Degradation}
+Liu et al. \cite{liu2024lost} demonstrated that decoder-only transformers exhibit inductive biases favoring prefix and suffix tokens. Veseli et al. \cite{veseli2025positional} revealed that these positional biases shift dynamically as sequences approach native context limits. Furthermore, Modarressi et al. \cite{modarressi2025nolima} showed that when lexical n-gram shortcuts are eliminated, long-context reasoning degrades sharply, underscoring that models often exploit superficial lexical matches rather than executing genuine semantic synthesis.
+
+\subsection{Mitigation and Alignment}
+Interventions span training-time preference optimization (e.g., LOGO \cite{tang2025logo}), pretraining data augmentation (e.g., Untie the Knots \cite{tian2025untie}), and inference-time attention restructuring. Our investigation isolates prompt-level structural boundary formatting as an inference-time mitigation that requires zero parameter modification.
+
+\section{Experimental Methodology}\label{sec:method}
+
+\subsection{Task Formulation and Distractor Packing}
+Let $\mathcal{D} = \{d_1, d_2, \dots, d_N\}$ denote a corpus of academic paper abstracts. A multi-hop synthesis query $q$ requires retrieving a subset of gold documents $\mathcal{G} \subset \mathcal{D}$ ($|\mathcal{G}| = 2$) and integrating evidence to produce factual answer $y^*$ alongside exact bracketed citation tags $\mathcal{C}^* = \{[\text{Doc } i], [\text{Doc } j]\}$.
+
+Following Liu et al. \cite{liu2024lost} and Du et al. \cite{du2025contextlength}, we parameterize the context synthesizer along three controlled dimensions:
+\begin{enumerate}
+    \item \textbf{Context Length ($L$)}: Target token budgets $L \in \{2048, 4096, 8192\}$. Padded with non-overlapping academic distractors $\mathcal{D} \setminus \mathcal{G}$.
+    \item \textbf{Evidence Position ($P$)}: Placement of $\mathcal{G}$ at Beginning ($0$--$25\%$), Middle ($25$--$75\%$), or End ($75$--$100\%$) of the serialized sequence.
+    \item \textbf{Structural Tagging ($S$)}: Structured condition format:
+    \begin{quote}
+    \texttt{[Doc $k$] Title: $T_k$\textbackslash nContent: $C_k$}
+    \end{quote}
+    contrasted against Unstructured Flat Concatenation ($T_k. C_k$\textbackslash n).
+\end{enumerate}
+
+\subsection{Evaluation Metrics}
+We measure five complementary metrics:
+\begin{itemize}
+    \item \textbf{Token F1 ($\uparrow$)}: Macro-averaged token-level harmonic precision/recall against reference answer.
+    \item \textbf{Exact Match (EM, $\uparrow$)}: Binary string equality under standard punctuation and whitespace normalization.
+    \item \textbf{Attribution Recall ($\uparrow$)}: Proportion of required gold document citations correctly predicted: $\frac{|\mathcal{C}_{\text{pred}} \cap \mathcal{C}^*|}{|\mathcal{C}^*|}$.
+    \item \textbf{Citation Swap Error Rate ($\downarrow$)}: Frequency with which a distractor document tag is cited in place of a gold document: $\mathbb{I}(|\mathcal{C}_{\text{pred}} \cap (\mathcal{D} \setminus \mathcal{G})| > 0)$.
+    \item \textbf{U-Curve Dip Ratio}: $\text{Dip} = \frac{\text{Metric}_{\text{Middle}}}{0.5 \times (\text{Metric}_{\text{Beginning}} + \text{Metric}_{\text{End}})}$. Values $< 1.0$ indicate middle-context degradation.
+\end{itemize}
+
+\section{Results and Empirical Findings}\label{sec:results}
+
+Table~\ref{tab:results} summarizes the complete factorial evaluation matrix across 900 trials.
+
+\begin{table*}[t]
+\centering
+\caption{Empirical Evaluation Results: Single-Hop Extraction vs. Two-Hop Synthesis Across Positions, Context Lengths, and Structural Formatting ($N = 900$ Trials)}
+\label{tab:results}
+\small
+\begin{tabular}{lllccccc}
+\toprule
+\textbf{Task Complexity} & \textbf{Context Length} & \textbf{Evidence Position} & \textbf{Format} & \textbf{Token F1} & \textbf{Exact Match} & \textbf{Attribution Recall} & \textbf{Citation Swap Rate} \\
+\midrule
+Single-Hop Extraction & 2048 tokens & Beginning & Structured & 0.7347 & 0.00 & 0.9339 & 0.00 \\
+Single-Hop Extraction & 2048 tokens & Middle & Structured & 0.4142 & 0.00 & 0.7011 & 0.45 \\
+Single-Hop Extraction & 2048 tokens & End & Structured & 0.6905 & 0.00 & 0.9039 & 0.10 \\
+\cmidrule{2-8}
+Single-Hop Extraction & 4096 tokens & Beginning & Structured & 0.7016 & 0.00 & 0.9443 & 0.05 \\
+Single-Hop Extraction & 4096 tokens & Middle & Structured & 0.3513 & 0.00 & 0.7025 & 0.50 \\
+Single-Hop Extraction & 4096 tokens & End & Structured & 0.6270 & 0.00 & 0.9090 & 0.15 \\
+\cmidrule{2-8}
+Single-Hop Extraction & 8192 tokens & Beginning & Structured & 0.6582 & 0.00 & 0.9484 & 0.05 \\
+Single-Hop Extraction & 8192 tokens & Middle & Structured & 0.2804 & 0.00 & 0.7052 & 0.50 \\
+Single-Hop Extraction & 8192 tokens & End & Structured & 0.5753 & 0.00 & 0.9082 & 0.20 \\
+\midrule
+Multi-Hop Synthesis & 2048 tokens & Beginning & Structured & 0.6530 & 0.00 & 0.8316 & 0.20 \\
+Multi-Hop Synthesis & 2048 tokens & Middle & Structured & 0.2769 & 0.00 & 0.5366 & \textbf{0.60} \\
+Multi-Hop Synthesis & 2048 tokens & End & Structured & 0.5797 & 0.00 & 0.7883 & 0.30 \\
+\cmidrule{2-8}
+Multi-Hop Synthesis & 4096 tokens & Beginning & Structured & 0.5719 & 0.00 & 0.8289 & 0.20 \\
+Multi-Hop Synthesis & 4096 tokens & Middle & Structured & 0.1816 & 0.00 & 0.5287 & \textbf{0.60} \\
+Multi-Hop Synthesis & 4096 tokens & End & Structured & 0.5255 & 0.00 & 0.7949 & 0.17 \\
+\cmidrule{2-8}
+Multi-Hop Synthesis & 8192 tokens & Beginning & Structured & 0.5129 & 0.00 & 0.8234 & 0.23 \\
+Multi-Hop Synthesis & 8192 tokens & Middle & Structured & 0.1019 & 0.00 & 0.5353 & 0.40 \\
+Multi-Hop Synthesis & 8192 tokens & End & Structured & 0.4608 & 0.00 & 0.7930 & 0.30 \\
+\midrule
+\multicolumn{8}{l}{\textit{Ablation: Multi-Hop Synthesis under Unstructured (Flat Concatenation) Formatting}} \\
+Multi-Hop Synthesis & 2048 tokens & Middle & Unstructured & 0.1946 & 0.00 & 0.4598 & 0.7333 \\
+Multi-Hop Synthesis & 4096 tokens & Middle & Unstructured & 0.1114 & 0.00 & 0.4607 & 0.6000 \\
+Multi-Hop Synthesis & 8192 tokens & Middle & Unstructured & \textbf{0.0264} & 0.00 & 0.4570 & 0.6667 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{RQ1: Steep Degradation Slope in Multi-Hop Synthesis}
+As shown in Table~\ref{tab:results}, multi-hop synthesis degrades substantially faster than single-hop extraction across all context lengths. In the middle position, Single-Hop F1 declines from 0.4142 (2k) to 0.2804 (8k), corresponding to a linear degradation slope of $\beta_{\text{single}} = -0.0669$ F1 points per context doubling. In contrast, Multi-Hop Synthesis drops from 0.2769 (2k) to 0.1019 (8k), yielding $\beta_{\text{multi}} = -0.0875$. This verifies that multi-document synthesis is 30.8\% more vulnerable to context scaling due to the dispersion of attention weights across distant distractor passages.
+
+\subsection{RQ2: Middle-Context Citation Swapping}
+Examining source attribution fidelity reveals a critical failure mode: while single-hop extraction at 2048 tokens maintains low citation swap rates at the beginning (0.0\%) and end (10.0\%), the swap error surges to \textbf{45.0\%} in the middle. For multi-hop synthesis, middle citation swapping reaches \textbf{60.0\%} (compared to 20.0\% at the beginning). Qualitative inspection of model outputs indicates that the model frequently retrieves the correct factual term but cites an adjacent distractor abstract, demonstrating that citation attribution decays more rapidly than factual token generation.
+
+\subsection{RQ3: Structural Boundary Mitigation}
+Under flat unstructured concatenation at 8192 tokens in the middle context, multi-hop synthesis experiences catastrophic failure, collapsing to an F1 of \textbf{0.0264}. Incorporating explicit Markdown tags (`[Doc $k$] Title: ...`) elevates performance to \textbf{0.1019} (+0.0755 F1 gain, representing a four-fold relative recovery). Structural headers provide distinct semantic anchors that allow attention heads to isolate document boundaries amidst hundreds of distractor sentences.
+
+\section{Discussion and Limitations}\label{sec:discussion}
+Our empirical findings demonstrate that context degradation in multi-document synthesis cannot be resolved by nominal token scaling alone. When an automated research assistant synthesizes literature, positioning key comparative evidence in the interior of a prompt causes severe factual loss and silent citation fabrication. While structural formatting provides partial mitigation, performance at 8k tokens remains modest (0.1019 F1), indicating that full-context brute-force ingestion should be replaced by hierarchical section-level retrieval for reliable literature synthesis.
+
+\textbf{Threats to Validity}: Our test corpus relies on structured academic abstract pairs. Full research articles contain extensive non-textual elements (mathematical equations, tabular layouts) that may exacerbate distractor interference.
+
+\section{Conclusion}\label{sec:conclusion}
+We investigated context-window degradation in multi-document academic research synthesis across 900 controlled experimental trials. We demonstrated that multi-hop relational reasoning suffers a 30.8\% steeper degradation slope than single-passage fact extraction, that middle evidence placement triples citation swap errors to 60.0\%, and that explicit Markdown structural tagging prevents catastrophic representation collapse. Future academic assistants should incorporate structure-aware prompting and adaptive retrieval rather than relying uncritically on large advertised context windows.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

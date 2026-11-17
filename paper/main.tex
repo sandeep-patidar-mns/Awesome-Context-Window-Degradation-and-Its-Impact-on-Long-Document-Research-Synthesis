@@ -19,6 +19,15 @@
 
 \title{Quantifying Context-Window Degradation in Multi-Document Academic Research Synthesis: An Empirical Investigation of Positional Bias, Relational Complexity, and Source Attribution}
 
+\author{Sandeep Patidar}
+\email{mns2026001@iiita.ac.in}
+\affiliation{%
+  \institution{Indian Institute of Information Technology Allahabad}
+  \city{Prayagraj}
+  \state{Uttar Pradesh}
+  \country{India}
+}
+
 \begin{abstract}
 While long-context large language models (LLMs) advertise nominal capacity exceeding 32k to 128k tokens, empirical evidence confirms that raw sequence length does not guarantee effective information utilization. Prior evaluations predominantly isolate single-needle retrieval amidst distractor text. In this paper, we conduct a controlled empirical investigation into multi-document research synthesis, where evidence is distributed across distinct academic papers and demands joint relational reasoning alongside faithful source attribution. Replicating the positional degradation protocols of Liu et al. (2024) and Du et al. (2025), we evaluate open-weight models across 900 controlled experimental trials varying context length (2k, 4k, 8k tokens), relative evidence position (Beginning, Middle, End), reasoning depth (Single-Hop Extraction vs. Two-Hop Cross-Document Synthesis), and structural document formatting. Our measured findings establish three core results: (1) two-hop relational synthesis suffers an accelerated degradation slope ($\beta = -0.0875$ F1 points per context doubling) that is 30.8\% steeper than single-hop fact extraction ($\beta = -0.0669$); (2) middle evidence placement triggers a three-fold surge in citation swap errors (jumping from 20.0\% to 60.0\%), demonstrating that source attribution fidelity degrades more aggressively than surface factual recall; and (3) explicit Markdown document boundaries provide structural anchor tokens that mitigate middle-context degradation by +0.0823 F1 points (+42.3\% relative gain) at 2048 tokens. These empirical findings substantiate that context degradation in multi-paper synthesis is fundamentally governed by relational attention dispersion rather than sequence length alone.
 \end{abstract}
