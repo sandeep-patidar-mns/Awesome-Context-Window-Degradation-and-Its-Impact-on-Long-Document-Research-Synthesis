@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment & Local checkpoints
+.env
+.venv
+env/
+venv/
+*.ipynb_checkpoints
+
+# OS generated
+.DS_Store
+Thumbs.db
