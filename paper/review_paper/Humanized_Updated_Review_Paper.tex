@@ -1,0 +1,114 @@
+\documentclass[manuscript,screen,oneside]{acmart}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc}
+
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\renewcommand{\footnotetextauthorsaddresses}[1]{}
+\renewcommand{\footnotetextcopyrightpermission}[1]{}
+\acmDOI{}
+\acmISBN{}
+\acmYear{2026}
+\copyrightyear{2026}
+\acmJournal{CSUR}
+
+\title{Context-Window Degradation and Its Impact on Long-Document Research Synthesis: A Critical Review}
+
+\author{Sandeep Patidar}
+\email{sandeep-patidar-mns@users.noreply.github.com}
+\affiliation{%
+  \institution{Postgraduate Research in Computing, Enrollment: MNS2026001}
+  \city{New Delhi}
+  \country{India}
+}
+
+\begin{abstract}
+While modern large language models advertise nominal context windows scaling from 32k to 128k+ tokens, a larger context capacity does not guarantee uniform, reliable utilization of the information within it. In this review, I synthesize 20 peer-reviewed and foundational scholarly papers discovered through citation-network exploration across ResearchRabbit, Litmaps, Semantic Scholar, and Elicit. The literature is structured around four interconnected themes: (1) context extension and sequence capacity; (2) empirical context-window degradation and positional biases; (3) benchmark evaluation and distributed multi-document reasoning; and (4) mitigation strategies spanning retrieval-augmented generation, sparse attention architectures, and preference alignment. Across these investigations, the empirical evidence demonstrates a fundamental divergence between nominal context capacity and effective context utilization. Performance reliably degrades as prompt length scales, when critical evidence is situated within interior positions (``Lost in the Middle''), when distracting passages accumulate, and when tasks require relational evidence integration across disparate documents. I contrast five distinct approach families and highlight persistent research gaps in multi-document academic synthesis, claim-level source attribution, and document structure sensitivity. The primary conclusion of this review is that long-context capability cannot be represented by a single maximum-token specification, but must be characterized as an evidence-dependent reliability property.
+\end{abstract}
+
+\keywords{long-context language models, context degradation, lost-in-the-middle, long-document research synthesis, retrieval-augmented generation, source attribution, multi-document reasoning}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+The evolution of transformer architectures has witnessed an aggressive expansion of advertised context windows, scaling from the 512 tokens of the original attention mechanism \cite{vaswani2017attention} to contemporary models claiming windows spanning 128k to upwards of a million tokens. This capacity scaling has fostered the widespread assumption that language models can now effortlessly ingest, reason over, and synthesize complete academic literature corpuses in a single prompt.
+
+However, practical utility in academic research synthesis is not determined by whether an input sequence fits into GPU memory. The decisive question is whether the model can faithfully locate, cross-reference, reason over, and synthesize evidence distributed across multiple complex research documents. In a typical literature synthesis workflow, an automated assistant must:
+\begin{enumerate}
+    \item Identify the core question in one study, the methodology in a second, and conflicting empirical outcomes in a third.
+    \item Maintain strict distinction between empirical observations and author conjectures.
+    \item Preserve faithful source attribution without hallucinating or swapping citations.
+    \item Resist distraction from structurally similar, non-relevant academic prose.
+\end{enumerate}
+
+Empirical literature increasingly reveals that models suffer severe effective-use failures long before reaching their nominal token limits. Foundational work by Liu et al. \cite{liu2024lost} identified a U-shaped positional degradation curve (``Lost in the Middle''), where evidence placed in the middle of long sequences is ignored or retrieved with significantly depressed accuracy. More recently, Du et al. \cite{du2025contextlength} demonstrated that sequence length alone induces degradation even under oracle conditions where all relevant passages are guaranteed to be present.
+
+This review synthesizes the evidence connecting context extension mechanisms to downstream reasoning failures. It develops a four-pillar taxonomy covering capacity scaling, degradation dynamics, benchmark evaluations, and mitigation strategies, establishing the scientific foundation for empirical multi-document research synthesis.
+
+\section{Literature Scope and Exploration Methodology}\label{sec:scope}
+The evidence base for this review consists of 20 core scholarly papers identified through an iterative, citation-linked discovery process utilizing ResearchRabbit, Litmaps, Semantic Scholar, and Elicit. Rather than a purely passive bibliographic search, papers were selected to illuminate specific technical trade-offs across four research dimensions:
+\begin{itemize}
+    \item \textbf{Theme 1: Context Extension and Nominal Capacity}: Examining positional encoding adaptations (e.g., ALiBi linear biases \cite{press2022train}, Positional Interpolation \cite{chen2023extending}, and continued pre-training curriculum scaling \cite{stallone2024granite}).
+    \item \textbf{Theme 2: Empirical Degradation and Positional Bias}: Analyzing how accuracy varies with token distance, relative position, and distractor density \cite{liu2024lost,du2025contextlength,veseli2025positional}.
+    \item \textbf{Theme 3: Multi-Document Reasoning and Benchmarks}: Evaluating distributed multi-hop benchmarks (LongBench \cite{bai2024longbench}, NoLiMa \cite{modarressi2025nolima}, BABILong \cite{kuratov2024babilong}).
+    \item \textbf{Theme 4: Mitigation and Alignment}: Investigating Retrieval-Augmented Generation (RAG), sparse attention algorithms \cite{yan2025adamas}, and long-context alignment optimization \cite{tang2025logo,tian2025untie}.
+\end{itemize}
+
+\section{Thematic Synthesis}\label{sec:synthesis}
+
+\subsection{Nominal Context Capacity versus Effective Context Use}
+Extending a model's sequence length is fundamentally a systems and architectural challenge. Position interpolation linearly downscales rotary position embeddings (RoPE) to match pretrained frequency ranges \cite{chen2023extending}, while ALiBi applies linear distance penalties to query-key attention logits \cite{press2022train}. These methods allow models to ingest 32k to 128k tokens without catastrophic perplexity explosion.
+
+However, low language-modeling perplexity on long sequences does not imply uniform information access. LongBench evaluations demonstrate that performance on multi-document question answering degrades significantly as context lengths expand \cite{bai2024longbench}. Effective context use requires robust attention allocation across distant tokens, which standard context extension methods do not guarantee.
+
+\subsection{Positional Degradation and Distractor Interference}
+The ``Lost in the Middle'' phenomenon \cite{liu2024lost} demonstrates that decoder-only transformers exhibit pronounced primacy and recency biases. Attention heads tend to concentrate probability mass on prefix tokens (due to attention sink dynamics) and suffix tokens (due to proximity to generation tokens), while interior tokens suffer relative attention starvation.
+
+Recent findings by Du et al. \cite{du2025contextlength} further isolate this failure mode: even when the exact target passages are present in the prompt (oracle retrieval), increasing the number of distractor tokens from 2k to 16k substantially reduces answer correctness. Furthermore, Veseli et al. \cite{veseli2025positional} show that positional biases are not static; as inputs approach a model's nominal context window limit, positional preferences shift dynamically, further complicating retrieval reliability.
+
+\subsection{Multi-Hop Reasoning and Semantic Abstraction}
+In research synthesis, evidence is rarely concentrated in a single contiguous paragraph. Connecting conflicting empirical claims across two papers requires multi-hop relational synthesis. Modarressi et al. \cite{modarressi2025nolima} demonstrated in the NoLiMa benchmark that when surface lexical matching shortcuts are eliminated, model reasoning degrades precipitously. This indicates that models frequently rely on shallow token matching rather than genuine semantic reasoning over long contexts.
+
+\section{Comparative Evaluation of Approach Families}\label{sec:comparison}
+Table~\ref{tab:comparison} contrasts five established approach families for handling long-context inputs.
+
+\begin{table*}[t]
+\centering
+\caption{Comparative Analysis of Long-Context Approach Families}
+\label{tab:comparison}
+\small
+\begin{tabularx}{\textwidth}{p{0.22\textwidth} X X X}
+\toprule
+\textbf{Approach Family} & \textbf{Key Mechanism} & \textbf{Primary Limitation} & \textbf{Impact on Research Synthesis} \\
+\midrule
+Context Extension / Positional Scaling & Interpolates or penalizes position embeddings (RoPE / ALiBi). & Extends nominal sequence length without ensuring uniform token access. & Enables ingestion of large corpuses but requires effective-use evaluation. \\
+Retrieval / Context Reduction (RAG) & Chunks documents and retrieves top-$k$ relevant passages. & Can omit cross-document evidence chains or isolate interdependent claims. & Effective for fact lookup; vulnerable when synthesis requires holistic comparison. \\
+Long-Context Alignment (LOGO) & Preference optimization tailored for sequences exceeding 32k tokens. & Substantial compute and annotation overhead during fine-tuning. & Enhances long-sequence instruction compliance and reduces format drift. \\
+Efficient / Sparse Attention (Adamas) & Approximates attention matrix via structured sparsity. & Computational speedup does not directly resolve semantic degradation. & Lowers inference latency for long inputs; semantic fidelity remains bounded. \\
+Structure-Aware Prompting & Formats inputs with explicit document and section boundaries. & Heuristic prompt-level mitigation with upper performance bounds. & Provides positional anchors that alleviate middle-context representation loss. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\section{Identified Research Gaps}\label{sec:gaps}
+Based on this thematic synthesis, I identify four specific research gaps relevant to automated academic synthesis:
+\begin{enumerate}
+    \item \textbf{Multi-Hop Relational Synthesis versus Fact Extraction}: Benchmarks predominantly test single-fact lookup. Empirical evaluation is needed to determine whether multi-hop relational reasoning degrades more steeply under distractor scaling.
+    \item \textbf{Source Attribution Fidelity and Citation Swapping}: Existing studies track answer accuracy but neglect citation correctness. In academic synthesis, a model may produce a plausible answer while falsely attributing it to an adjacent distractor paper.
+    \item \textbf{Impact of Scientific Document Structure}: Scientific articles possess rich structural hierarchies (abstracts, headings, methodologies). How explicit structural boundary formatting affects middle-context degradation remains underexplored.
+    \item \textbf{Adaptive Context Selection}: Clear decision frameworks are needed to balance full-context ingestion against hierarchical retrieval.
+\end{enumerate}
+
+\section{Conclusion}\label{sec:conclusion}
+Context-window degradation is a fundamental reliability challenge that cannot be resolved solely by scaling hardware or advertising larger nominal context windows. For long-document research synthesis, language models exhibit distinct positional vulnerabilities, distractor sensitivities, and source attribution decay. Reliable literature-review assistants must integrate structure-aware prompting, hierarchical evidence selection, and rigorous human verification rather than relying uncritically on unconstrained full-context processing.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
