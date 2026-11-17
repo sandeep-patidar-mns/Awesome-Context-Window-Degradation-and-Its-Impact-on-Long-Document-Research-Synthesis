@@ -69,7 +69,7 @@ Research Synthesis Quality
 ```
 
 ### Curated Research Components
-- **Paper 1 PDF**: [`paper/AI_Assisted_Research_Paper.pdf`](paper/AI_Assisted_Research_Paper.pdf) (Thematic literature review of 20 papers).
+- **Initial Review Paper (PDF)**: [`Review_Paper_Initially_Submitted.pdf`](Review_Paper_Initially_Submitted.pdf) or [`paper/AI_Assisted_Research_Paper.pdf`](paper/AI_Assisted_Research_Paper.pdf) (Complete 16-page Literature Review: *Context-Window Degradation and Its Impact on Long-Document Research Synthesis*, IIIT Allahabad).
 - **Citation Integrity Audit**: [`citation-audit/Citation_Integrity_Audit.pdf`](citation-audit/Citation_Integrity_Audit.pdf) (Provenance audit of reviewed sources).
 - **Primary References**: [`references/references.md`](references/references.md) (Annotated literature base).
 - **Datasets & Benchmarks**: [`datasets/datasets.md`](datasets/datasets.md) (LongBench, HotpotQA, BABILong, NoLiMa).
