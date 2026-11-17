@@ -1,0 +1,50 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#ffffff" />
+  <text x="375" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#222222">Source Attribution Fidelity & Citation Swap Errors by Evidence Position</text>
+  <text x="375" y="52" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">Evaluated across Multi-Document Research Synthesis Instances (2048 Tokens)</text>
+  
+  <!-- Left Chart: Citation Swap Error Rate -->
+  <text x="210" y="80" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" fill="#d95f02">Citation Swap Error Rate (%)</text>
+  <line x1="80" y1="360" x2="340" y2="360" stroke="#333333" stroke-width="1.5" />
+  <line x1="80" y1="360" x2="80" y2="100" stroke="#333333" stroke-width="1.5" />
+  <text x="70" y="365" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0%</text>
+  <text x="70" y="295" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">25%</text>
+  <text x="70" y="225" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">50%</text>
+  <text x="70" y="155" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">75%</text>
+  
+  <!-- Bars Left: Beg=20% (h=56), Mid=60% (h=168), End=30% (h=84) -->
+  <rect x="105" y="304" width="45" height="56" fill="#d95f02" rx="2" />
+  <text x="127" y="295" font-family="Arial" font-size="11" text-anchor="middle" fill="#d95f02" font-weight="bold">20.0%</text>
+  <text x="127" y="380" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">Beginning</text>
+  
+  <rect x="185" y="192" width="45" height="168" fill="#d95f02" rx="2" />
+  <text x="207" y="182" font-family="Arial" font-size="11" text-anchor="middle" fill="#d95f02" font-weight="bold">60.0%</text>
+  <text x="207" y="380" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">Middle</text>
+  
+  <rect x="265" y="276" width="45" height="84" fill="#d95f02" rx="2" />
+  <text x="287" y="266" font-family="Arial" font-size="11" text-anchor="middle" fill="#d95f02" font-weight="bold">30.0%</text>
+  <text x="287" y="380" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">End</text>
+  
+  <!-- Right Chart: Attribution Recall -->
+  <text x="560" y="80" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" fill="#7570b3">Attribution Recall (%)</text>
+  <line x1="430" y1="360" x2="690" y2="360" stroke="#333333" stroke-width="1.5" />
+  <line x1="430" y1="360" x2="430" y2="100" stroke="#333333" stroke-width="1.5" />
+  <text x="420" y="365" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">0%</text>
+  <text x="420" y="295" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">25%</text>
+  <text x="420" y="225" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">50%</text>
+  <text x="420" y="155" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">75%</text>
+  <text x="420" y="85" font-family="Arial" font-size="11" text-anchor="end" fill="#555555">100%</text>
+  
+  <!-- Bars Right: Beg=83.2% (h=233), Mid=53.7% (h=150), End=78.8% (h=221) -->
+  <rect x="455" y="127" width="45" height="233" fill="#7570b3" rx="2" />
+  <text x="477" y="117" font-family="Arial" font-size="11" text-anchor="middle" fill="#7570b3" font-weight="bold">83.2%</text>
+  <text x="477" y="380" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">Beginning</text>
+  
+  <rect x="535" y="210" width="45" height="150" fill="#7570b3" rx="2" />
+  <text x="557" y="200" font-family="Arial" font-size="11" text-anchor="middle" fill="#7570b3" font-weight="bold">53.7%</text>
+  <text x="557" y="380" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">Middle</text>
+  
+  <rect x="615" y="139" width="45" height="221" fill="#7570b3" rx="2" />
+  <text x="637" y="129" font-family="Arial" font-size="11" text-anchor="middle" fill="#7570b3" font-weight="bold">78.8%</text>
+  <text x="637" y="380" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">End</text>
+</svg>

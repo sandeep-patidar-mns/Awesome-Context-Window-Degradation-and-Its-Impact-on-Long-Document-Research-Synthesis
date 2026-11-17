@@ -136,9 +136,11 @@ Extending from the literature review gaps, Phase 2 conducts a **controlled exper
 ---
 
 ### Publication Figures
-- **Positional U-Curve**: [`results/fig_u_curve.svg`](results/fig_u_curve.svg)
-- **Degradation Slopes**: [`results/fig_length_degradation.svg`](results/fig_length_degradation.svg)
-- **Citation Swap Errors**: [`results/fig_attribution_errors.svg`](results/fig_attribution_errors.svg)
+![Positional U-Curve](fig_u_curve.svg)
+
+- **Positional U-Curve Vector Graphic**: [`fig_u_curve.svg`](fig_u_curve.svg)
+- **Degradation Slopes Vector Graphic**: [`fig_length_degradation.svg`](fig_length_degradation.svg)
+- **Citation Swap Errors Vector Graphic**: [`fig_attribution_errors.svg`](fig_attribution_errors.svg)
 
 ---
 
@@ -221,7 +223,9 @@ powershell -ExecutionPolicy Bypass -File scripts/generate_plots.ps1
 ```
 
 ### Google Colab GPU Execution
-Open [`notebooks/AITR_Lab02_Colab_Runner.ipynb`](notebooks/AITR_Lab02_Colab_Runner.ipynb) in Google Colab with a free T4 GPU to run end-to-end inference with `Qwen/Qwen2.5-7B-Instruct`.
+Open **[`notebook.ipynb`](notebook.ipynb)** in Google Colab (or click below) with a free T4 GPU to run end-to-end inference:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sandeep-patidar-mns/Awesome-Context-Window-Degradation-and-Its-Impact-on-Long-Document-Research-Synthesis/blob/main/notebook.ipynb)
 
 ---
 
@@ -229,8 +233,8 @@ Open [`notebooks/AITR_Lab02_Colab_Runner.ipynb`](notebooks/AITR_Lab02_Colab_Runn
 
 In compliance with institute guidelines, AI (Antigravity / Gemini) was used as an interactive technical pair programmer and writing scaffold under supervised human review.
 
-- **Integrity Rule**: No citations, benchmark numbers, or execution logs were fabricated. Every number in Table 1 is traceable to `results/comparative_study_results.csv`.
-- **Detailed Audit**: See [`paper/ai_provenance_report.md`](paper/ai_provenance_report.md) and [`ai_assistance_log.md`](ai_assistance_log.md) for the 3 documented debugging cases and human decisions.
+- **Integrity Rule**: No citations, benchmark numbers, or execution logs were fabricated. Every number in Table 1 is traceable to [`context_degradation_results.csv`](context_degradation_results.csv).
+- **Detailed Audit**: See [`ai_provenance_report.md`](ai_provenance_report.md) and [`ai_assistance_log.md`](ai_assistance_log.md) for the 3 documented debugging cases and human decisions.
 
 ---
 
